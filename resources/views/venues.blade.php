@@ -4,22 +4,18 @@
     @section('content')
 
         @if(Session::has('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success ">
                 {{Session::get('success')}}
             </div>
         @endif
-<div class="container" id="venuecards">
-    <h1>VENUES</h1>
+<div class="position-relative d-flex-columns" style="display:flex; flex-direction:column; align-items:center;" id="venuecards">
+    <h1 class="mt-5 mb-4 text-daek">ΠΑΡΑΣΤΑΣΕΙΣ</h1>
+    <div class="w-100 row  justify-content-center" >
     @foreach($venues as $venue)
         @include('venue')
 
-
-
-{{--                <button type="button" class="btn btn-info btn-lg" data-id='{{ $venue->id }}' data-target="myModal">Open Modal</button>--}}
-
-{{--                <a href="#"  class="btn btn-success" data-toogle="modal" data-bs-target="#ModalReserve">Go somewhere</a>--}}
-
   @endforeach
+    </div>
 </div>
 
   @endsection

@@ -12,22 +12,22 @@
 
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-<body>
+<body style="background: #ddd;">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-secondary sticky-top">
-    <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark bg-gradient sticky-top">
+    <a class="navbar-brand fs-3 text-white mx-5" h ref="#">ΘΕΑΤΡΙΚΗ ΟΜΑΔΑ</a>
 
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/venues">Παραστάσεις</a>
+                <a class="nav-link text-white mx-3" href="/venues">Παραστάσεις</a>
             </li>
 
             @if( (Auth::user()))
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('venues.create') }}">Νέα Παράσταση</a>
+                <a class="nav-link text-white mx-3" href="{{ route('venues.create') }}">Νέα Παράσταση</a>
             </li>
 
             @endif
@@ -37,19 +37,19 @@
 
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block mx-5">
                 @auth
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <a href="route('logout')"
+                    <a class="text-sm text-white underline" href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         Log out
                 </a>
                 </form>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                    <a href="{{ route('login') }}" class="text-sm text-white underline">Log in</a>
 
 
                 @endauth
