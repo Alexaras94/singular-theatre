@@ -32,6 +32,14 @@ class VenueController extends Controller
     }
 
 
+    public function venuesId()
+    {
+        $venues = Venue::all();
+        return view('allreservations', ['venues' => $venues]);
+
+    }
+
+
 
 
 

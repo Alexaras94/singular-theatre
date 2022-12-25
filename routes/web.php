@@ -31,9 +31,8 @@ Route::get("/", function () {
 
 
 
-Route::get('/newvenue', function () {
-    return View('newvenue');
-})->name('newvenue');
+
+//
 
 
 
@@ -46,12 +45,14 @@ Route::post('reservation/create/', [ReservationController::class, 'store'])->nam
 Route::get('reservation/edit/{venue_id}', [ReservationController::class, 'edit'])->name('reservation.edit');
 Route::get('reservation/destroy/{venue}', [ReservationController::class, 'destroy'])->name('reservation.delete');
 
-
+Route::get('/reservationslist',[VenueController::class,'venuesId'])->name('venues.id');
 
 //Route::post('/reservations',[ReservationController::class,'store'])->name('newreservation');
 
 // Route::post('/reservations', [ReservationController::class, 'store'])->name('newreservation');
-Route::resource('venues', VenueController::class,['only' => ['index', 'show']]);
+//Route::resource('venues', VenueController::class,['only' => ['index', 'show']]);
+
+Route::resource('venues', VenueController::class,['only'=>['index', 'show']]);;
 
 //Route::get('/getVenueDetails/{venueid}', [VenueController::class, 'getVenueDetails'])->name('getVenueDetails');
 
@@ -64,7 +65,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
   Route::get('/deletetevenue/{venue}', [VenueController::class, 'destroy'])->name('venues.delete');
-  Route::resource('venues', VenueController::class)->except(['index','show']);
+ Route::resource('venues', VenueController::class)->except(['index','show','create']);
+ Route::get('/newvenue', [VenueController::class,'create'])->name('venues.create');
 
 
 
