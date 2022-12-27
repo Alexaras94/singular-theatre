@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVenueRequest;
+use App\Models\Reservation;
 use App\Models\Venue;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class VenueController extends Controller
     public function index()
     {
         $venues = Venue::all();
-        return view('venues', ['venues' => $venues]);
+        return view('venue', ['venues' => $venues]);
 
 
         //   return view('home');
@@ -32,10 +33,20 @@ class VenueController extends Controller
     }
 
 
+
+
+
+
+
+
+
+
+
     public function venuesId()
     {
         $venues = Venue::all();
-        return view('allreservations', ['venues' => $venues]);
+        $reserations=Reservation::all();
+        return view('allreservations', ['venues' => $venues,'reservations'=>$reserations]);
 
     }
 

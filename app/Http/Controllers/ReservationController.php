@@ -87,9 +87,12 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function show(Reservation $reservation)
+    public function show(Request $request)
+
     {
-        //
+        dd($request);
+
+
     }
 
     /**

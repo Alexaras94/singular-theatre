@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", function () {
 
-    return redirect('/venues');
+    return redirect('/venue');
 
 });
 
@@ -44,6 +44,8 @@ Route::get('reservation/create/{venue_id}', [ReservationController::class, 'crea
 Route::post('reservation/create/', [ReservationController::class, 'store'])->name('reservation.store');
 Route::get('reservation/edit/{venue_id}', [ReservationController::class, 'edit'])->name('reservation.edit');
 Route::get('reservation/destroy/{venue}', [ReservationController::class, 'destroy'])->name('reservation.delete');
+
+Route::get('/reservationslist/show', [ReservationController::class, 'show'])->name('reservations.show');
 
 Route::get('/reservationslist',[VenueController::class,'venuesId'])->name('venues.id');
 
