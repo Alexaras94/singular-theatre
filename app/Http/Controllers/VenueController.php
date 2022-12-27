@@ -77,6 +77,7 @@ class VenueController extends Controller
         $venue->capacity = $request->get('capacity');
         $venue->location = $request->get('location');
         $venue->free_seats = $request->get('capacity');
+        $venue->description=$request->get('description');
         $venue->save();
 
 

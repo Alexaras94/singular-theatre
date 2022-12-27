@@ -29,6 +29,7 @@ class StoreVenueRequest extends FormRequest
             'venue_time'=>'required',
             'capacity'=>'required',
             'location'=>'required',
+            'description'=>'required',
 
 
             //

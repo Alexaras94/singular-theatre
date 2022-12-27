@@ -23,6 +23,7 @@ return new class extends Migration
             $table->time("venue_time");
             $table->string("location", 255);
             $table->integer('free_seats')->nullable();
+            $table->string("description");
             $table->enum('status', ['ACTIVE', 'INCATIVE']);
         });
     }

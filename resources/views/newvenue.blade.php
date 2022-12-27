@@ -63,13 +63,18 @@
     @section('content')
 
 
-   
+
 <div class="card w-75">
                     <form action="{{route('venues.store')}}" method="POST">
 
                         @csrf
 
-                        <input type="text" name="title" placeholder="Τίτλος" class="form-control m-3">
+                        <input type="text" name="title" placeholder="Τίτλος" class="form-control m-3" >
+
+
+                        <div class="form-group">
+                        <textarea id="description" placeholder="Περιγραφή Παράστασης" name="description" rows="4" cols="50"  class="form-control m-3" style="padding-right: 100px"></textarea>
+                    </div>
 
                         <input type="number" name="capacity" placeholder="Χωρητικότητα" class="form-control m-3">
 
