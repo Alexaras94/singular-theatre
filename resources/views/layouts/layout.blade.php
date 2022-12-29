@@ -1,66 +1,79 @@
 
 
-<!-- CSS only -->
-<style>
-    .page-footer{
-        position: absolute;
-        bottom: 0px;
-    }
 
-</style>
+{{-- @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css']) --}}
+@vite('resources/css/app.css')
 
+<body class="bg-white">
 
-@vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-<body style="background: #ddd;">
-
-<nav class="navbar navbar-expand-lg navbar-light bg-dark bg-gradient sticky-top">
-    <a class="navbar-brand fs-3 text-white mx-5" h ref="#">ΘΕΑΤΡΙΚΗ ΟΜΑΔΑ</a>
+<div class="bg-slate-900 sticky top-0 h-20 w-screen text-white flex flex-row items-center">
+    <a class="basis-80 text-2xl border-r border-1 border-white text-center p-2 mx-4 h-full flex items-center" >Θεατρική Ομάδα «Εμείς»</a>
 
 
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link text-white mx-3" href="/venues">Παραστάσεις</a>
-            </li>
-
+    <div class="basis-4/6 mx-4" id="navbarSupportedContent">
+        
+        <ul class="flex">
             @if( (Auth::user()))
-            <li class="nav-item active">
-                <a class="nav-link text-white mx-3" href="{{ route('venues.create') }}">Νέα Παράσταση</a>
-            </li>
+                <li class="mx-3">
+                    <a  class="{{ request()->is('venues*') ? 'font-bold' : '' }}" href="/venues">Επεξεργασία Παράστασης</a>
+                </li>
+
+                
+                <li class="mx-3">
+                    <a class="{{ request()->is('newvenue*') ? 'font-bold' : '' }}" href="{{ route('venues.create') }}">Προσθήκη Παράστασης</a>
+                </li>
+            @else
+                <li class="mx-3">
+                    <a  class="{{ request()->is('venues*') ? 'font-bold' : '' }}" href="/venues">Πραγματοποίηση Κράτησης</a>
+                </li>
+
+                
+                <li class="mx-3">
+                    <a class="{{ request()->is('newvenue*') ? 'font-bold' : '' }}" href="{{ route('venues.create') }}">Ακύρωση Κράτησης</a>
+                </li>
 
             @endif
         </ul>
+        
+
     </div>
 
 
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+    <div class="basis-1/6 text-right mx-4 underline ">
         @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block mx-5">
+            <div class="">
                 @auth
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <a class="text-sm text-white underline" href="route('logout')"
+                    <a class="" href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         Log out
                 </a>
                 </form>
+
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-white underline">Log in</a>
+                    <a href="{{ route('login') }}" class="">Log in</a>
 
 
                 @endauth
             </div>
         @endif
-       @section('content')
+       {{-- @section('content') --}}
     </div>
-</nav>
+</div>
 
 
 @yield('content')
+
+
+<div class="fixed bg-white w-screen bottom-0 h-16 flex flex-row justify-evenly border border-t-1 border-slate-900 py-2">
+    <img src="{{ asset('images/epsilon-singular.png') }}">
+    <img src="{{ asset('images/epsilon-singular.png') }}">
+    <img src="{{ asset('images/space.png') }}">
+    <img src="{{ asset('images/slg.png') }}">
+</div>
 
 
 
