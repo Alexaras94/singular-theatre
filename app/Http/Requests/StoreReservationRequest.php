@@ -13,7 +13,7 @@ class StoreReservationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class StoreReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'username' => 'required',
+            'number_of_seats' => 'required|numeric|max:4',
+            'email' => 'required',
+            'phone_number' => 'required',
+            'company' => 'required|max:20',
+            'venue_id' => 'required|unique:venues,id',
+
         ];
     }
 }
