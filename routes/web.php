@@ -16,17 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome',['']);
-//});
-
-//Route::any('/',[VenueController::class,'index'])-
 
 
 Route::get("/", function () {
 
-    return redirect('/venues');
-
+    return redirect('/reservations');
 });
 
 
@@ -35,56 +29,37 @@ Route::get("/", function () {
 //
 
 
+Route::resource('reservations', ReservationController::class);
 
 
 
 
+// Route::get('reservation/create/{venue_id}', [ReservationController::class, 'create'])->name('reservation.create');
+// Route::post('reservation/create/', [ReservationController::class, 'store'])->name('reservation.store');
+// Route::get('reservation/edit/{venue_id}', [ReservationController::class, 'edit'])->name('reservation.edit');
+// Route::get('reservation/destroy/{venue}', [ReservationController::class, 'destroy'])->name('reservation.delete');
 
-Route::get('reservation/create/{venue_id}', [ReservationController::class, 'create'])->name('reservation.create');
-Route::post('reservation/create/', [ReservationController::class, 'store'])->name('reservation.store');
-Route::get('reservation/edit/{venue_id}', [ReservationController::class, 'edit'])->name('reservation.edit');
-Route::get('reservation/destroy/{venue}', [ReservationController::class, 'destroy'])->name('reservation.delete');
+// Route::get('/reservationslist/show', [ReservationController::class, 'show'])->name('reservations.show');
 
-Route::get('/reservationslist/show', [ReservationController::class, 'show'])->name('reservations.show');
+// Route::get('/reservationslist', [VenueController::class, 'venuesId'])->name('venues.id');
 
-Route::get('/reservationslist',[VenueController::class,'venuesId'])->name('venues.id');
 
-//Route::post('/reservations',[ReservationController::class,'store'])->name('newreservation');
 
-// Route::post('/reservations', [ReservationController::class, 'store'])->name('newreservation');
-//Route::resource('venues', VenueController::class,['only' => ['index', 'show']]);
+// Route::resource('venues', VenueController::class, ['only' => ['index', 'show']]);;
 
-Route::resource('venues', VenueController::class,['only'=>['index', 'show']]);;
 
-//Route::get('/getVenueDetails/{venueid}', [VenueController::class, 'getVenueDetails'])->name('getVenueDetails');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-  Route::get('/deletetevenue/{venue}', [VenueController::class, 'destroy'])->name('venues.delete');
- Route::resource('venues', VenueController::class)->except(['index','show','create']);
- Route::get('/newvenue', [VenueController::class,'create'])->name('venues.create');
-
-
-
-
-
-
-
-
-
-
-    // Route::post('/newvenue',[VenueController::class,'store']);
-
-
-    //Route::get('/newvenue',[VenueController::class,'store'])->name("newvenue");
-    //  Route::resource('venues', VenueController::class);
-
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/deletetevenue/{venue}', [VenueController::class, 'destroy'])->name('venues.delete');
+    Route::resource('venues', VenueController::class);
+    Route::get('/newvenue', [VenueController::class, 'create'])->name('venues.create');
 });
-//Route::post('/venues', VenueController::class);
+
 require __DIR__ . '/auth.php';

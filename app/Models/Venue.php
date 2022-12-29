@@ -9,7 +9,7 @@ class Venue extends Model
 {
 
     protected $fillable = [
-        'location', 'venue_date', 'venue_time', 'title', 'capacity', 'status' ,'free_seats','description',
+        'location', 'venue_date', 'venue_time', 'title', 'capacity', 'status', 'free_seats', 'description',
     ];
     use HasFactory;
 }

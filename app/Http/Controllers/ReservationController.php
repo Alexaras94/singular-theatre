@@ -17,7 +17,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        $venues = Venue::all();
+        return view('newReservation', ['venues' => $venues]);
     }
 
     /**
@@ -25,10 +26,11 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($venue_id)
+    public function create()
     {
 
-        return view('newReservation', ['venue_id' => $venue_id]);
+        $venues = Venue::all();
+        return view('removeReservation', ['venues' => $venues]);
 
         //
     }
@@ -49,32 +51,15 @@ class ReservationController extends Controller
 
 
 
-    public function store(Request $request)
+    public function store(StoreReservationRequest $request)
     {
+        info("aaaa");
 
-        if ($request->method() == 'POST') {
-
-            Reservation::create([
-                'username' => $request->get('username'),
-                'number_of_seats' => $request->get('number_of_seats'),
-                'venue_id'=> $request->get('venue_id'),
-                'email' => $request->get('email'),
-                'company' => $request->get('company'),
+        $reservation = Reservation::create($request->validated());
 
 
-            ]);
-//            $reservation = new Reservation();
-//            $reservation->venue_id = $request->get('venue_id');
-//            $reservation->username = $request->get('username');
-//            $reservation->number_of_seats = $request->get('number_of_seats');
-//            $reservation->company = $request->get('company');
-//            $reservation->email = $request->get('email');
-//
-//            $reservation->save();
 
-        }
-
-        return redirect()->route('venues.index')->withSuccess('Η κράτηση σας έγινε επιτυχώς');
+        return redirect()->route('reservations')->withSuccess('Η κράτηση σας έγινε επιτυχώς');
 
         //
         //return View
@@ -91,8 +76,6 @@ class ReservationController extends Controller
 
     {
         dd($request);
-
-
     }
 
     /**
@@ -127,9 +110,10 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy($venue_id, Request $request)
+    public function destroy($a, Request $request)
     {
-        Reservation::where('venue_id', $venue_id)->where('email', $request->get('email'))->delete();
-        return redirect('/venues');
+
+        Reservation::where('venue_id', $request->get('venue_id'))->where('email', $request->get('email'))->delete();
+        return redirect('/reservations');
     }
 }

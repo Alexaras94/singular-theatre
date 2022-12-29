@@ -24,12 +24,12 @@ class StoreVenueRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required',
-            'venue_date'=>'required',
-            'venue_time'=>'required',
-            'capacity'=>'required',
-            'location'=>'required',
-            'description'=>'required',
+            'title' => 'required',
+            'venue_date' => 'required',
+            'venue_time' => 'required',
+            'capacity' => 'required',
+            'location' => 'required',
+            // 'description'=>'required',
 
 
             //

@@ -13,7 +13,7 @@ class VenueController extends Controller
 
     public function __construct()
     {
-       // $this->middleware('auth', ['except' => ['index', 'show']]);
+        // $this->middleware('auth', ['except' => ['index', 'show']]);
         // OR
         //  $this->middleware('auth')->only(['store','update','edit','create']);
     }
@@ -24,8 +24,7 @@ class VenueController extends Controller
      */
     public function index()
     {
-        $venues = Venue::all();
-        return view('venue', ['venues' => $venues]);
+        return view('newvenue');
 
 
         //   return view('home');
@@ -45,9 +44,8 @@ class VenueController extends Controller
     public function venuesId()
     {
         $venues = Venue::all();
-        $reserations=Reservation::all();
-        return view('allreservations', ['venues' => $venues,'reservations'=>$reserations]);
-
+        $reserations = Reservation::all();
+        return view('allreservations', ['venues' => $venues, 'reservations' => $reserations]);
     }
 
 
@@ -77,19 +75,18 @@ class VenueController extends Controller
     public function store(StoreVenueRequest $request)
     {
 
-
-
-
         $venue = Venue::create($request->validated());
-        //$venue = new Venue();
-        $venue->title = $request->get('title');
-        $venue->venue_date = $request->get('venue_date');
-        $venue->venue_time = $request->get('venue_time');
-        $venue->capacity = $request->get('capacity');
-        $venue->location = $request->get('location');
         $venue->free_seats = $request->get('capacity');
-        $venue->description=$request->get('description');
         $venue->save();
+        //$venue = new Venue();
+        // $venue->title = $request->get('title');
+        // $venue->venue_date = $request->get('venue_date');
+        // $venue->venue_time = $request->get('venue_time');
+        // $venue->capacity = $request->get('capacity');
+        // $venue->location = $request->get('location');
+        // $venue->free_seats = $request->get('capacity');
+        // $venue->description=$request->get('description');
+        // $venue->save();
 
 
 
