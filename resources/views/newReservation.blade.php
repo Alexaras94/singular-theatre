@@ -1,5 +1,21 @@
+
+
+
 @extends('layouts.layout')
+
+
+
+
 @section('content')
+
+
+    @if (session('status'))
+        <div class="bg-lime-500">
+            {{ session('status') }}
+        </div>
+    @endif
+
+
     <div class="flex flex-col items-center">
         <div class="text-center w-4/6 border border-1 border-slate-900 my-4">
 
@@ -24,7 +40,7 @@
 
 
         <div class="my-4 w-3/6">
-            <form class="grid lg:grid-cols-2 gap-3" action="{{ route('reservations.store') }}" method="POST">
+            <form class="grid lg:grid-cols-2 gap-3" action="{{ route('reservations.store') }}" method="post">
 
                 @csrf
 
@@ -43,10 +59,10 @@
                 </select>
 
                 <input required type="number" name="number_of_seats" min=1 max=4 placeholder="Αριθμός Θέσεων"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"/>
 
                 <input required type="text" name="username" placeholder="Οναματεπώνυμο"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0" />
 
                 <select required name="company" id="company"
                     class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
@@ -67,22 +83,28 @@
                 </select>
 
                 <input required type="email" name="email" placeholder="Email"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"/>
 
-                <input required type="text" name="phone" placeholder="Κινητό Τηλέφωνο"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                <input required type="text" name="phone_number" placeholder="Κινητό Τηλέφωνο"
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"/>
 
-                <button type="submit"
-                    class="w-1/6 lg:col-span-2 bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg"
-                    action>Κράτηση</button>
+                <button type="submit" class="w-1/6 lg:col-span-2 bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg">Κράτηση</button>
 
 
 
 
             </form>
+
+
+            @if($errors->any())
+                {!! implode('', $errors->all('<div>:message</div>')) !!}
+            @endif
+
         </div>
 
 
 
     </div>
+
+
 @endsection

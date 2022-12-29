@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('number_of_seats');
             $table->string('email');
             $table->string('company');
+            $table->string('phone_number');
 
 
         });

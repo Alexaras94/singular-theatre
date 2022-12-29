@@ -20,8 +20,7 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        ReservationEvent::class=>[
-            ReservationStore::class,]
+
     ];
 
     /**
@@ -32,7 +31,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        Reservation::observe(ReservationObserver::class);
+       Reservation::observe(ReservationObserver::class);
     }
 
     /**

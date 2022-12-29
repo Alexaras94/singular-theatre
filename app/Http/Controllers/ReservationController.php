@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreReservationRequest;
+use App\Http\Requests\StoreVenueRequest;
 use App\Models\Reservation;
 use App\Models\Venue;
 use Illuminate\Http\Request;
@@ -54,12 +55,13 @@ class ReservationController extends Controller
     public function store(StoreReservationRequest $request)
     {
         info("aaaa");
+     //   dd($request);
 
-        $reservation = Reservation::create($request->validated());
+        Reservation::create($request->validated());
 
 
 
-        return redirect()->route('reservations')->withSuccess('Η κράτηση σας έγινε επιτυχώς');
+       return redirect()->to('/reservations')->with('status','Επιτυχής Κράτηση');
 
         //
         //return View

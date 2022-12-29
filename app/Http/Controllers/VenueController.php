@@ -78,15 +78,7 @@ class VenueController extends Controller
         $venue = Venue::create($request->validated());
         $venue->free_seats = $request->get('capacity');
         $venue->save();
-        //$venue = new Venue();
-        // $venue->title = $request->get('title');
-        // $venue->venue_date = $request->get('venue_date');
-        // $venue->venue_time = $request->get('venue_time');
-        // $venue->capacity = $request->get('capacity');
-        // $venue->location = $request->get('location');
-        // $venue->free_seats = $request->get('capacity');
-        // $venue->description=$request->get('description');
-        // $venue->save();
+
 
 
 
