@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="flex flex-col items-center">
-        <div class="text-center w-4/6 border border-1 border-slate-900 mb-10 mt-1">
+        <div class="text-center w-4/6 border border-1 border-slate-900 mb-10 mt-16">
 
             <p class="text-xl my-3">Ακύρωση κράτησης για την θεατρική παράσταση</p>
             <h1 class="text-3xl underline mt-3"><strong>Interview</strong></h1>
@@ -23,7 +23,7 @@
             </p>
         </div>
 
-        <div class="my-4 w-1/2 mb-52">
+        <div class="my-4 w-1/2 mb-48">
 
             <form class="grid lg:grid-cols-2 gap-3" action="{{ route('reservations.destroy', 0) }}" method="GET">
 

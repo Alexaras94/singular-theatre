@@ -13,13 +13,14 @@
             <ul class="flex">
                 @if (Auth::user())
                     <li class="mx-3">
-                        <a class="{{ request()->is('venues*') ? 'font-bold' : '' }}" href="/venues">Επεξεργασία
+                        <a class="{{ request()->is('venues/venue/edit') ? 'font-bold' : '' }}"
+                            href="{{ route('venues.edit', 'venue') }}">Επεξεργασία
                             Παράστασης</a>
                     </li>
 
 
                     <li class="mx-3">
-                        <a class="{{ request()->is('newvenue*') ? 'font-bold' : '' }}"
+                        <a class="{{ request()->is('venues/create') ? 'font-bold' : '' }}"
                             href="{{ route('venues.create') }}">Προσθήκη Παράστασης</a>
                     </li>
                 @else

@@ -1,37 +1,39 @@
 @extends('layouts.layout')
 
 
-    @section('content')
+@section('content')
+    <div class="container" id="venuecards">
 
-<div class="container" id="venuecards">
 
+        <h1>Επεξεργασία Παράστασης</h1>
+        <div class="">
 
-    <h1>Επεξεργασία Παράστασης</h1>
-        <div class="card  w-75">
-            <h5 class="card-title">{{$venue->title}}</h5>
-
-            <form method="POST" action="{{route('venues.update',$venue)}}">
+            <form method="POST" action="{{ route('venues.update', 0) }}">
                 @method('PUT')
                 @csrf
 
 
 
-                <input type="text"  name="title" value="{{$venue->title}}" class="form-control m-3">
-                <input type="number" name="capacity"  value="{{$venue->capacity}}" class="form-control m-3">
+                <input type="text" name="title"
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                <input type="number" name="capacity"
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
-                <input type="text" name="location"   value="{{$venue->location}}" class="form-control m-3">
+                <input type="text" name="location"
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
-                <input type="date" name="venue_date"  value="{{$venue->venue_date}}" class="form-control m-3">
+                <input type="date" name="venue_date"
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
-                <input type="time" name="venue_time"  value="{{$venue->venue_time}}" class="form-control m-3">
+                <input type="time" name="venue_time"
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
 
-                <button class='btn btn-success' type='submit' >Αποθήκεσυη</button>
+                <button class='w-1/6 lg:col-span-2 bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg'
+                    type='submit'>Αποθήκεσυη</button>
 
 
             </form>
         </div>
-</div>
-
-
+    </div>
 @endsection
