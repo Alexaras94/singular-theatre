@@ -25,10 +25,10 @@ class StoreReservationRequest extends FormRequest
     {
         return [
             'username' => 'required',
-            'number_of_seats' => 'required|numeric|max:1',
+            'number_of_seats' => 'required|numeric|min:1|max:4',
             'email' => 'required',
             'phone_number' => 'required',
-            'company' => 'required|max:20',
+            'company' => 'required|max:30',
             'venue_id' => 'required|exists:venues,id',
 
         ];

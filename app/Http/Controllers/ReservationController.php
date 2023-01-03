@@ -57,14 +57,13 @@ class ReservationController extends Controller
 
     public function store(StoreReservationRequest $request)
     {
-        info("aaaa");
-     //   dd($request);
+        $reservation = Reservation::create($request->validated());
 
-        Reservation::create($request->validated());
+        if (!$reservation) {
+            return redirect()->to('/reservations')->with('status', 'fail');
+        }
 
-
-
-       return redirect()->to('/reservations')->with('status','Επιτυχής Κράτηση');
+        return redirect()->to('/reservations')->with('status', 'success');
 
         //
         //return View
@@ -77,11 +76,11 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($a)
 
     {
 
-    return Reservation::all();
+        return Reservation::all();
     }
 
     /**
@@ -119,17 +118,12 @@ class ReservationController extends Controller
     public function destroy($a, Request $request)
     {
 
-        Reservation::where('venue_id', $request->get('venue_id'))->where('email', $request->get('email'))->delete();
-        return redirect('/reservations');
+        Reservation::where('venue_id', $request->get('venue_id'))->where('email', $request->get('email'))->first()->delete();
+        return redirect()->to('/reservations');
     }
 
-    public function  export(){
-        return Excel::download(new ReservationsExport(),"reservations.xlsx");
+    public function  export()
+    {
+        return Excel::download(new ReservationsExport(), "reservations.xlsx");
     }
-
-
-
-
-
-
 }

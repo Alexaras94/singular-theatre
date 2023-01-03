@@ -13,20 +13,18 @@
             <ul class="flex">
                 @if (Auth::user())
                     <li class="mx-3">
-                        <a class="{{ request()->is('venues/venue/edit') ? 'font-bold' : '' }}"
-                            href="{{ route('venues.edit', 'venue') }}">Επεξεργασία
-                            Παράστασης</a>
-                    </li>
-
-
-                    <li class="mx-3">
                         <a class="{{ request()->is('venues/create') ? 'font-bold' : '' }}"
                             href="{{ route('venues.create') }}">Προσθήκη Παράστασης</a>
                     </li>
 
                     <li class="mx-3">
-                        <a class="{{ request()->is('venues/create') ? 'font-bold' : '' }}"
-                           href="{{ route('reservation.export') }}">Προβολή Κρατήσεων</a>
+                        <a class="{{ request()->is('venues/venue/edit') ? 'font-bold' : '' }}"
+                            href="{{ route('venues.edit', 'venue') }}">Επεξεργασία
+                            Παράστασης</a>
+                    </li>
+
+                    <li class="mx-3">
+                        <a href="{{ route('reservation.export') }}">Λήψη Κρατήσεων</a>
                     </li>
                 @else
                     <li class="mx-3">
@@ -67,7 +65,6 @@
                     @endauth
                 </div>
             @endif
-            {{-- @section('content') --}}
         </div>
     </div>
 

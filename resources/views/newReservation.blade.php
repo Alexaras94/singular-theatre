@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.layout')
 
 
@@ -8,14 +5,9 @@
 
 
 @section('content')
-
-    @inject('helper',\App\helper\FreeSeatsHelper::class);
-
-
-    @if (session('status'))
-        <div class="bg-lime-500">
-            {{ session('status') }}
-        </div>
+    @inject('helper', \App\helper\FreeSeatsHelper::class);
+    @if ($errors->any())
+        {!! implode('', $errors->all('<div>:message</div>')) !!}
     @endif
 
 
@@ -46,6 +38,15 @@
             <form class="grid lg:grid-cols-2 gap-3" action="{{ route('reservations.store') }}" method="post">
 
                 @csrf
+                @if (session('status') == 'success')
+                    <p class="text-green-600 font-bold lg:col-span-2 text-center justify-self-center">
+                        Η κράτησή σας πραγματοποιήθηκε με επιτυχία!
+                    </p>
+                @elseif(session('status') == 'fail')
+                    <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
+                        Η κράτηση απέτυχε.
+                    </p>
+                @endif
 
                 <select required name="venue_id" id="venue_id"
                     class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
@@ -54,18 +55,15 @@
                         Επιλέξτε ημερομηνία
                     </option>
                     @foreach ($venues as $venue)
-
-
-                        <option value="{{ $venue->id }}" style="color:{{$helper->DropDownColour($venue)}} ">
-                                {{ $venue->venue_date }}
+                        <option value="{{ $venue->id }}" style="color:{{ $helper->DropDownColour($venue) }} ">
+                            {{ $venue->venue_date }}
                         </option>
-
                     @endforeach
 
                 </select>
 
                 <input required type="number" name="number_of_seats" min=1 max=4 placeholder="Αριθμός Θέσεων"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"/>
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0" />
 
                 <input required type="text" name="username" placeholder="Οναματεπώνυμο"
                     class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0" />
@@ -82,6 +80,9 @@
                     <option value="Epsilon Singularlogic">
                         Epsilon Singularlogic
                     </option>
+                    <option value="Epsilon">
+                        Epsilon
+                    </option>
                     <option value="Space">
                         Space
                     </option>
@@ -89,12 +90,13 @@
                 </select>
 
                 <input required type="email" name="email" placeholder="Email"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"/>
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0" />
 
                 <input required type="text" name="phone_number" placeholder="Κινητό Τηλέφωνο"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"/>
+                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0" />
 
-                <button type="submit" class="w-1/6 lg:col-span-2 bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg">Κράτηση</button>
+                <button type="submit"
+                    class="w-1/6 lg:col-span-2 bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg">Κράτηση</button>
 
 
 
@@ -102,15 +104,11 @@
             </form>
 
 
-            @if($errors->any())
-                {!! implode('', $errors->all('<div>:message</div>')) !!}
-            @endif
+
 
         </div>
 
 
 
     </div>
-
-
 @endsection

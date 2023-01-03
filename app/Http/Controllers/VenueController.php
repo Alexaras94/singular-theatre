@@ -12,12 +12,7 @@ class VenueController extends Controller
 {
 
 
-    public function __construct()
-    {
-        // $this->middleware('auth', ['except' => ['index', 'show']]);
-        // OR
-        //  $this->middleware('auth')->only(['store','update','edit','create']);
-    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,12 +37,12 @@ class VenueController extends Controller
 
 
 
-    public function venuesId()
-    {
-        $venues = Venue::all();
-        $reserations = Reservation::all();
-        return view('allreservations', ['venues' => $venues, 'reservations' => $reserations]);
-    }
+    // public function venuesId()
+    // {
+    //     $venues = Venue::all();
+    //     $reserations = Reservation::all();
+    //     return view('allreservations', ['venues' => $venues, 'reservations' => $reserations]);
+    // }
 
 
 
@@ -62,7 +57,6 @@ class VenueController extends Controller
      */
     public function create()
     {
-        info("mphka sth create!!!!");
         return view('newvenue');
         //
     }
@@ -106,11 +100,11 @@ class VenueController extends Controller
      * @param  \App\Models\Venue  $venue
      * @return \Illuminate\Http\Response
      */
-    public function edit(Venue $venue)
+    public function edit($a)
     {
+        $venues = Venue::all();
 
-
-        return view('editvenue', ['venue' => $venue]);
+        return view('editvenue', ['venues' => $venues]);
 
         //
     }
@@ -122,26 +116,20 @@ class VenueController extends Controller
      * @param  \App\Models\Venue  $venue
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateVenueRequest $request, Venue $venue)
+    public function update(UpdateVenueRequest $request, $a)
     {
 
-//
-//        $venue->title = $request->get('title');
-//        $venue->location = $request->get('location');
-//        $venue->venue_date = $request->get('venue_date');
-//        $venue->venue_time = $request->get('venue_time');
-//        $venue->capacity = $request->get('capacity');
-        //$venue->status=$request->get('status');
+        $venue = Venue::find($request->get('venue_id'));
 
-        $venue = Venue::update($request->validated());
+        $venue->update($request->validated());
+
         $venue->status = "ACTIVE";
 
-        if ($venue->save()) {
-            echo "to post saved";
-            return redirect('/venues')->withSuccess('Οι αλλαγές στην παράσταση αποθηκεύτηκαν');
-        } else {
-            return redirect('/venues')->withSuccess('Οι αλλαγές στην παράσταση DEN αποθηκεύτηκαν');
+        if (!$venue->save()) {
+            return redirect()->to('/venues/venue/edit')->with('status', 'fail');
         }
+
+        return redirect()->to('/venues/venue/edit')->with('status', 'success');
 
         //
     }
@@ -152,11 +140,11 @@ class VenueController extends Controller
      * @param  \App\Models\Venue  $venue
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Venue $venue)
+    public function destroy($a, Request $request)
     {
-
+        $venue = Venue::find($request->get('hidden_id'));
         $venue->delete();
 
-        return redirect('/venues');
+        return redirect()->to('/venues/venue/edit');
     }
 }

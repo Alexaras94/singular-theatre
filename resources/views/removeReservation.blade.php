@@ -25,8 +25,9 @@
 
         <div class="my-4 w-1/2 mb-48">
 
-            <form class="grid lg:grid-cols-2 gap-3" action="{{ route('reservations.destroy', 0) }}" method="GET">
-
+            <form class="grid lg:grid-cols-2 gap-3" action="{{ route('reservations.destroy', 'reservation') }}"
+                method="POST">
+                @method('DELETE ')
                 @csrf
 
                 <select required name="venue_id" id="venue_id"

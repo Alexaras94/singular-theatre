@@ -1,29 +1,23 @@
 @extends('layouts.layout')
 
-
 @section('content')
-
-    <div class="container" >
-
-
-        <h1>Προβολή Κρατήσεων</h1>
-        <div class="card  w-75">
-            <form action="{{route('$reservation.show')}}" method="get">
-
-            <select class="js-states browser-default select2" name=reservation_id" required id="reservation_id" onchange="getselection()">
-                <option value="option_select" disabled selected>Reservations</option>
-                @foreach($venues as $venue)
-                    <option value="{{ $venue->id }}" {{$venue->id == $venue->id  ? 'selected' : ''}}>
-                        {{$venue->title}}
-
-                    </option>
-                @endforeach
-
-            </select>
-                <button type="submit" class="btn btn-primary" action > Προβολή </button>
+    <div class="flex flex-row justify-center">
 
 
-            </form>
+        <select required name="venue_id" id="venue_id" onchange="showReservations({{ $reservations }})"
+            class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+
+            <option value="" hidden>
+                Επιλέξτε ημερομηνία
+            </option>
+            @foreach ($venues as $venue)
+                <option value="{{ $venue->id }}" class="">
+                    {{ $venue->venue_date }}
+                </option>
+            @endforeach
+
+        </select>
+        <div class="">
 
 
 
@@ -31,7 +25,8 @@
 
 
 
-            <p id="demo"></p>
+
+
 
 
         </div>
@@ -41,11 +36,14 @@
 
 
     <script>
-        function getSelection() {
+        function showReservations(reservations) {
+            var id = document.getElementById('venue_id').value;
+            var selected = reservations.filter(function(r) {
+                return r.venue_id == id;
+            })
+            console.log(selected);
+
 
         }
     </script>
-
-
-
 @endsection

@@ -2,31 +2,33 @@
 
 
 @section('content')
-    <div class="flex justify-center">
-        <h1 class="text-center">Νέα Παράσταση</h1>
-        <form class="grid lg:grid-cols-2 gap-3" action="{{ route('venues.store') }}" method="POST">
+    <div class="flex flex-col items-center">
+
+        <p class="text-center pb-16 font-bold underline text-xl">Νέα Παράσταση</p>
+
+        <form class="grid lg:grid-cols-2 gap-3 mb-36" action="{{ route('venues.store') }}" method="POST">
 
             @csrf
 
-            <input type="text" name="title" placeholder="Τίτλος"
+            <input required type="text" name="title" placeholder="Τίτλος"
                 class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
 
-            <div class="form-group">
-                <textarea id="description" placeholder="Περιγραφή Παράστασης" name="description" rows="4" cols="50"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"></textarea>
-            </div>
 
-            <input type="number" name="capacity" placeholder="Χωρητικότητα"
+            <textarea id="description" placeholder="Περιγραφή Παράστασης" name="description" rows="4" cols="50"
+                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"></textarea>
+
+
+            <input required type="number" name="capacity" placeholder="Χωρητικότητα"
                 class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
-            <input type="text" name="location" placeholder="Τοποθεσία"
+            <input required type="text" name="location" placeholder="Τοποθεσία"
                 class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
-            <input type="date" name="venue_date" placeholder="Ημερομηνία"
+            <input required type="date" name="venue_date" placeholder="Ημερομηνία"
                 class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
-            <input type="time" name="venue_time" placeholder="Ώρα"
+            <input required type="time" name="venue_time" placeholder="Ώρα"
                 class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
 

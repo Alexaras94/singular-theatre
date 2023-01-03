@@ -2,38 +2,89 @@
 
 
 @section('content')
-    <div class="container" id="venuecards">
+    <div class="flex flex-col items-center">
+
+        <p class="text-center mb-16 font-bold underline text-xl">Επεξεργασία Παράστασης</p>
+
+        <form class="grid lg:grid-cols-2 gap-3 mb-36" id="edit_form" method="POST"
+            action="{{ route('venues.update', 'venue') }}">
+            @method('PUT')
+            @csrf
+
+            @if (session('status') == 'success')
+                <p class="text-green-600 font-bold lg:col-span-2 text-center justify-self-center">
+                    Οι αλλαγές αποθηκεύτηκαν επιτυχώς!
+                </p>
+            @elseif(session('status') == 'fail')
+                <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
+                    Οι αλλαγές δεν αποθηκεύτηκαν!
+                </p>
+            @endif
 
 
-        <h1>Επεξεργασία Παράστασης</h1>
-        <div class="">
+            <select required name="venue_id" id="venue_id" onchange="fillInputs({{ $venues }})"
+                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
-            <form method="POST" action="{{ route('venues.update', 0) }}">
-                @method('PUT')
-                @csrf
+                <option value="" hidden>
+                    Επιλέξτε ημερομηνία
+                </option>
+                @foreach ($venues as $venue)
+                    <option value="{{ $venue->id }}" class="">
+                        {{ $venue->venue_date }}
+                    </option>
+                @endforeach
 
-
-
-                <input type="text" name="title"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
-                <input type="number" name="capacity"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
-
-                <input type="text" name="location"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
-
-                <input type="date" name="venue_date"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
-
-                <input type="time" name="venue_time"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+            </select>
 
 
-                <button class='w-1/6 lg:col-span-2 bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg'
-                    type='submit'>Αποθήκεσυη</button>
+
+            <input type="text" name="title" id="title" placeholder="Τίτλος"
+                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+
+            <input type="number" name="capacity" id="capacity" placeholder="Χωρητικότητα"
+                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+
+            <input type="text" name="location" id="location" placeholder="Τοποθεσία"
+                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+
+            <input type="date" name="venue_date" id="venue_date" placeholder="Ημερομηνία"
+                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+
+            <input type="time" name="venue_time" id="venue_time" placeholder="Ώρα"
+                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
 
-            </form>
-        </div>
+            <button class='w-4/6  bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg' type='submit'
+                form="edit_form">Αποθήκεσυη</button>
+
+            <button class='w-4/6  bg-red-800 text-white justify-self-center p-2 mt-4 rounded-lg' type='submit'
+                form="delete_form">Διαγραφή</button>
+
+        </form>
+
+        <form method="POST" id="delete_form" action="{{ route('venues.destroy', 'venue') }}">
+            @method('DELETE')
+            @csrf
+
+            <input type="hidden" name="hidden_id" id="hidden_id">
+        </form>
+
     </div>
 @endsection
+
+
+<script>
+    function fillInputs(venues) {
+        var id = document.getElementById('venue_id').value;
+        var v = venues.filter(function(venue) {
+            return venue.id == id;
+        })[0]
+        document.getElementById('title').value = v.title;
+        document.getElementById('capacity').value = v.capacity;
+        document.getElementById('location').value = v.location;
+        document.getElementById('venue_date').value = v.venue_date;
+        document.getElementById('venue_time').value = v.venue_time;
+        document.getElementById('hidden_id').value = id;
+
+    }
+</script>

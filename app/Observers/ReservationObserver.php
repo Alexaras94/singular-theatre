@@ -17,19 +17,18 @@ class ReservationObserver
     public function created(Reservation $reservation)
     {
 
-        $id=$reservation->venue_id;
-        info($reservation->venue_id);
-        $venues=Venue::where('id',$id)->get();
-        info($venues);
-        $seats=Reservation::where('venue_id',$id)->sum('number_of_seats');
-        foreach($venues as $venue)
-        {
-            $venuecapacity=($venue->capacity);
+        $id = $reservation->venue_id;
+
+        $venues = Venue::where('id', $id)->get();
+
+        $seats = Reservation::where('venue_id', $id)->sum('number_of_seats');
+        foreach ($venues as $venue) {
+            $venuecapacity = ($venue->capacity);
         }
 
-         $free_seats=$venuecapacity-$seats;
-      //  $free_seats=$venue->capacity - $seats;
-        $venue->update(['free_seats'=>$free_seats]);
+        $free_seats = $venuecapacity - $seats;
+        //  $free_seats=$venue->capacity - $seats;
+        $venue->update(['free_seats' => $free_seats]);
 
 
 
@@ -59,7 +58,17 @@ class ReservationObserver
      */
     public function deleted(Reservation $reservation)
     {
-        //
+        $id = $reservation->venue_id;
+
+        $venues = Venue::where('id', $id)->get();
+
+        $seats = Reservation::where('venue_id', $id)->sum('number_of_seats');
+        foreach ($venues as $venue) {
+            $venuecapacity = ($venue->capacity);
+        }
+
+        $free_seats = $venuecapacity - $seats;
+        $venue->update(['free_seats' => $free_seats]);
     }
 
     /**
