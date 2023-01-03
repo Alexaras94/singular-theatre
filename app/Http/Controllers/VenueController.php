@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVenueRequest;
+use App\Http\Requests\UpdateVenueRequest;
 use App\Models\Reservation;
 use App\Models\Venue;
 use Illuminate\Http\Request;
@@ -121,17 +122,18 @@ class VenueController extends Controller
      * @param  \App\Models\Venue  $venue
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Venue $venue)
+    public function update(UpdateVenueRequest $request, Venue $venue)
     {
 
-
-        $venue->title = $request->get('title');
-        $venue->location = $request->get('location');
-        $venue->venue_date = $request->get('venue_date');
-        $venue->venue_time = $request->get('venue_time');
-        $venue->capacity = $request->get('capacity');
+//
+//        $venue->title = $request->get('title');
+//        $venue->location = $request->get('location');
+//        $venue->venue_date = $request->get('venue_date');
+//        $venue->venue_time = $request->get('venue_time');
+//        $venue->capacity = $request->get('capacity');
         //$venue->status=$request->get('status');
 
+        $venue = Venue::update($request->validated());
         $venue->status = "ACTIVE";
 
         if ($venue->save()) {

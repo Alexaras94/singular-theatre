@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ReservationsExport;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\StoreVenueRequest;
 use App\Models\Reservation;
 use App\Models\Venue;
 use Illuminate\Http\Request;
-use Ramsey\Uuid\Type\Integer;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 class ReservationController extends Controller
 {
@@ -77,7 +80,8 @@ class ReservationController extends Controller
     public function show(Request $request)
 
     {
-        dd($request);
+
+    return Reservation::all();
     }
 
     /**
@@ -118,4 +122,14 @@ class ReservationController extends Controller
         Reservation::where('venue_id', $request->get('venue_id'))->where('email', $request->get('email'))->delete();
         return redirect('/reservations');
     }
+
+    public function  export(){
+        return Excel::download(new ReservationsExport(),"reservations.xlsx");
+    }
+
+
+
+
+
+
 }

@@ -23,6 +23,11 @@
                         <a class="{{ request()->is('venues/create') ? 'font-bold' : '' }}"
                             href="{{ route('venues.create') }}">Προσθήκη Παράστασης</a>
                     </li>
+
+                    <li class="mx-3">
+                        <a class="{{ request()->is('venues/create') ? 'font-bold' : '' }}"
+                           href="{{ route('reservation.export') }}">Προβολή Κρατήσεων</a>
+                    </li>
                 @else
                     <li class="mx-3">
                         <a class="{{ request()->is('reservations') ? 'font-bold' : '' }}"

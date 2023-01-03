@@ -31,6 +31,8 @@ Route::get("/", function () {
 
 Route::resource('reservations', ReservationController::class);
 
+Route::get('reservation/export', [ReservationController::class,'export'])->name('reservation.export');
+
 
 
 

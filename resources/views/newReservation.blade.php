@@ -6,7 +6,10 @@
 
 
 
+
 @section('content')
+
+    @inject('helper',\App\helper\FreeSeatsHelper::class);
 
 
     @if (session('status'))
@@ -51,9 +54,12 @@
                         Επιλέξτε ημερομηνία
                     </option>
                     @foreach ($venues as $venue)
-                        <option value="{{ $venue->id }}">
-                            {{ $venue->venue_date }}
+
+
+                        <option value="{{ $venue->id }}" style="color:{{$helper->DropDownColour($venue)}} ">
+                                {{ $venue->venue_date }}
                         </option>
+
                     @endforeach
 
                 </select>
