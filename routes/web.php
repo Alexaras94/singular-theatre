@@ -29,9 +29,9 @@ Route::get("/", function () {
 //
 
 
-Route::resource('reservations', ReservationController::class);
+Route::resource('reservations', ReservationController::class)->middleware('guest');
 
-Route::get('reservation/export', [ReservationController::class, 'export'])->name('reservation.export');
+
 
 
 
@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Route::get('/deletetevenue/{venue}', [VenueController::class, 'destroy'])->name('venues.delete');
     Route::resource('venues', VenueController::class);
+    Route::get('reservation/export', [ReservationController::class, 'export'])->name('reservation.export');
 });
 
 require __DIR__ . '/auth.php';

@@ -46,6 +46,14 @@
                     <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
                         Η κράτηση απέτυχε.
                     </p>
+                @elseif(session('status') == 'invalid number of seats')
+                    <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
+                        Οι διαθέσιμες θέσεις δεν είναι αρκετές για την πραγματποίηση της κράτησής σας!
+                    </p>
+                @elseif(session('status') == 'repeated')
+                    <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
+                        Υπάρχει ήδη κράτηση για το συγκεκριμένο email!
+                    </p>
                 @endif
 
                 <select required name="venue_id" id="venue_id"
@@ -55,9 +63,11 @@
                         Επιλέξτε ημερομηνία
                     </option>
                     @foreach ($venues as $venue)
-                        <option value="{{ $venue->id }}" style="color:{{ $helper->DropDownColour($venue) }} ">
-                            {{ $venue->venue_date }}
-                        </option>
+                        @if ($venue->status == 'ACTIVE')
+                            <option value="{{ $venue->id }}" style="color:{{ $helper->DropDownColour($venue) }} ">
+                                {{ $venue->venue_date }}
+                            </option>
+                        @endif
                     @endforeach
 
                 </select>

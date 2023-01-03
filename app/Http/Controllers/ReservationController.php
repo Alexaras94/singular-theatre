@@ -57,9 +57,26 @@ class ReservationController extends Controller
 
     public function store(StoreReservationRequest $request)
     {
-        $reservation = Reservation::create($request->validated());
+        $reservation = Reservation::where('venue_id', $request->get('venue_id'))->where('email', $request->get('email'))->get();
 
         if (!$reservation) {
+            $venue = Venue::find($request->get('venue_id'));
+
+            if ($venue->free_seats >= $request->get('number_of_seats')) {
+
+                $reservation = Reservation::create($request->validated());
+            } else {
+
+                return back()->withInput()->with('status', 'invalid number of seats');
+            }
+        } else {
+            return back()->withInput()->with('status', 'repeated');
+        }
+
+
+
+        if (!$reservation) {
+
             return redirect()->to('/reservations')->with('status', 'fail');
         }
 
