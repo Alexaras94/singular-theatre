@@ -71,15 +71,13 @@ class VenueController extends Controller
     {
 
         $venue = Venue::create($request->validated() + ['free_seats' => $request->get('capacity')]);
-        $venue->save();
 
 
+        if (!$venue) {
+            return redirect()->to('/venues')->with('status', 'fail');
+        }
 
-
-        //na gyrisw to view
-        //
-
-        return view('newvenue');
+        return redirect()->to('/venues')->with('status', 'success');
     }
 
     /**
@@ -120,13 +118,8 @@ class VenueController extends Controller
 
         $venue = Venue::find($request->get('venue_id'));
 
-        $venue->update($request->validated());
+        $venue->update($request->validated() + ['status' => "ACTIVE"]);
 
-        $venue->status = "ACTIVE";
-
-        if (!$venue->save()) {
-            return redirect()->to('/venues/venue/edit')->with('status', 'fail');
-        }
 
         return redirect()->to('/venues/venue/edit')->with('status', 'success');
 

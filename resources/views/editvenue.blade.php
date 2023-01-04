@@ -23,10 +23,10 @@
 
 
             <select required name="venue_id" id="venue_id" onchange="fillInputs({{ $venues }})"
-                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                class="lg:col-span-2 w-1/2 justify-self-center m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
 
                 <option value="" hidden>
-                    Επιλέξτε ημερομηνία
+                    Επιλέξτε παράσταση
                 </option>
                 @foreach ($venues as $venue)
                     <option value="{{ $venue->id }}" class="">
@@ -38,8 +38,8 @@
 
 
 
-            <input type="text" name="title" id="title" placeholder="Τίτλος"
-                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+            {{-- <input type="text" name="title" id="title" placeholder="Τίτλος"
+                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"> --}}
 
             <input type="number" name="capacity" id="capacity" placeholder="Χωρητικότητα"
                 class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
@@ -79,7 +79,7 @@
         var v = venues.filter(function(venue) {
             return venue.id == id;
         })[0]
-        document.getElementById('title').value = v.title;
+        // document.getElementById('title').value = v.title;
         document.getElementById('capacity').value = v.capacity;
         document.getElementById('location').value = v.location;
         document.getElementById('venue_date').value = v.venue_date;
