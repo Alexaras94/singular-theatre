@@ -70,8 +70,7 @@ class VenueController extends Controller
     public function store(StoreVenueRequest $request)
     {
 
-        $venue = Venue::create($request->validated());
-        $venue->free_seats = $request->get('capacity');
+        $venue = Venue::create($request->validated() + ['free_seats' => $request->get('capacity')]);
         $venue->save();
 
 
