@@ -129,6 +129,9 @@ class ReservationController extends Controller
 
     public function  export()
     {
-        return Excel::download(new ReservationsExport(), "reservations.xlsx");
+      //  return Excel::download(new ReservationsExport(), "reservations.xlsx")->withHeadings();
+
+        return Excel::download(new ReservationsExport, "reservations.xlsx");
+
     }
 }

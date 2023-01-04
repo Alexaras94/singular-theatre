@@ -12,4 +12,8 @@ class Venue extends Model
         'location', 'venue_date', 'venue_time', 'title', 'capacity', 'status', 'free_seats', 'description',
     ];
     use HasFactory;
+
+    public function reservation(){
+        return $this->hasMany(Reservation::class);
+    }
 }
