@@ -18,13 +18,11 @@ return new class extends Migration
             $table->timestamps();
             $table->bigInteger('venue_id')->unsigned()->index();
             $table->foreign('venue_id')->references('id')->on('venues')->onDelete('cascade');
-            $table->string('username',255);
-            $table->integer('number_of_seats',min("1"));
+            $table->string('username');
+            $table->integer('number_of_seats');
             $table->string('email');
             $table->string('company');
             $table->string('phone_number');
-
-
         });
     }
 

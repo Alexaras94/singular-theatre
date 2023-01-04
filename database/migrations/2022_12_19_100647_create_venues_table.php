@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string("title", 255);
+            // $table->string("title", 255);
             $table->integer("capacity");
             $table->date("venue_date");
             $table->time("venue_time");
             $table->string("location", 255);
             $table->integer('free_seats')->nullable();
-            $table->string("description");
+            // $table->string("description");
             $table->enum('status', ['ACTIVE', 'INACTIVE']);
         });
     }
