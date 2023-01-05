@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Events\BeforeSheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpParser\Node\Expr\Cast\Object_;
 
@@ -33,6 +34,7 @@ class ReservationsExport implements FromCollection, withHeadings, ShouldAutoSize
 
     {
         return [
+
             1    => ['font' => ['bold' => true]],
         ];
     }
@@ -55,12 +57,13 @@ class ReservationsExport implements FromCollection, withHeadings, ShouldAutoSize
     {
         return [
             AfterSheet::class    => function(AfterSheet $event) {
+                $event->sheet->freezePane('A2');
+
 
                $event->sheet->getDelegate()->getStyle('A1:H999')
                    ->getAlignment()
                    ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-
-            }
+        }
         ];
     }
 }
