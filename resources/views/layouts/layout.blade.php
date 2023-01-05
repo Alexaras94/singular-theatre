@@ -7,7 +7,7 @@
 
         <div class="flex justify-between items-center px-6">
             <img src="{{ asset('images/slg.png') }}">
-            <a class="text-center text-4xl font-medium">Θεατρική Ομάδα</a>
+            <a class="text-slg-blue text-center text-4xl font-medium">Θεατρική Ομάδα</a>
             <img src="{{ asset('images/epsilon-singular.png') }}">
         </div>
 
