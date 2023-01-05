@@ -44,10 +44,6 @@ Route::resource('reservations', ReservationController::class)->middleware('guest
 
 
 Route::middleware('auth')->group(function () {
-    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    // Route::get('/deletetevenue/{venue}', [VenueController::class, 'destroy'])->name('venues.delete');
     Route::resource('venues', VenueController::class);
     Route::get('reservation/export', [ReservationController::class, 'export'])->name('reservation.export');
 });

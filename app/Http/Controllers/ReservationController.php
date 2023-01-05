@@ -45,15 +45,6 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //    public function store(StoreReservationRequest $request)
-    //    {
-    //        $reservation=Reservation::create($request->validated());
-    //
-    //        //
-    //        //return View
-    //    }
-
-
 
     public function store(StoreReservationRequest $request)
     {
@@ -129,9 +120,6 @@ class ReservationController extends Controller
 
     public function  export()
     {
-      //  return Excel::download(new ReservationsExport(), "reservations.xlsx")->withHeadings();
-
         return Excel::download(new ReservationsExport, "reservations.xlsx");
-
     }
 }

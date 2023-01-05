@@ -21,33 +21,7 @@ class VenueController extends Controller
     public function index()
     {
         return view('newvenue');
-
-
-        //   return view('home');
-        //
     }
-
-
-
-
-
-
-
-
-
-
-
-    // public function venuesId()
-    // {
-    //     $venues = Venue::all();
-    //     $reserations = Reservation::all();
-    //     return view('allreservations', ['venues' => $venues, 'reservations' => $reserations]);
-    // }
-
-
-
-
-
 
 
     /**

@@ -27,7 +27,6 @@ class ReservationObserver
         }
 
         $free_seats = $venuecapacity - $seats;
-        //  $free_seats=$venue->capacity - $seats;
         if ($free_seats == 0) {
             $venue->update(['free_seats' => $free_seats, 'status' => "INACTIVE"]);
         } else {

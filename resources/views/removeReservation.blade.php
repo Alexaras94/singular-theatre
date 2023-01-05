@@ -23,7 +23,7 @@
             </p>
         </div>
 
-        <div class="my-4 w-1/2 mb-48">
+        <div class="my-4 w-1/2 mb-14">
 
             <form class="grid lg:grid-cols-2 gap-3" action="{{ route('reservations.destroy', 'reservation') }}"
                 method="POST">
@@ -50,7 +50,7 @@
 
 
                 <button type="submit"
-                    class="w-1/6 lg:col-span-2 bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg"> Ακύρωση
+                    class="w-1/3 lg:col-span-2 bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg"> Ακύρωση
                     Κράτησης</button>
 
             </form>

@@ -5,14 +5,14 @@
 
 
 @section('content')
-    @inject('helper', \App\helper\FreeSeatsHelper::class);
+    @inject('helper', \App\helper\FreeSeatsHelper::class)
     @if ($errors->any())
         {!! implode('', $errors->all('<div>:message</div>')) !!}
     @endif
 
 
     <div class="flex flex-col items-center">
-        <div class="text-center w-4/6 border border-1 border-slate-900 my-4">
+        <div class="text-center w-4/6 border border-1 border-slate-900 my-3">
 
             <p class="text-xl my-3">Κράτηση θέσεων στην θεατρική παράσταση</p>
             <h1 class="text-3xl underline mt-3"><strong>Interview</strong></h1>
@@ -34,8 +34,8 @@
 
 
 
-        <div class="my-4 w-3/6">
-            <form class="grid lg:grid-cols-2 gap-3" action="{{ route('reservations.store') }}" method="post">
+        <div class="my-2 w-3/6">
+            <form class="grid lg:grid-cols-2 gap-1" action="{{ route('reservations.store') }}" method="post">
 
                 @csrf
                 @if (session('status') == 'success')

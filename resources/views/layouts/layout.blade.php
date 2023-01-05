@@ -3,7 +3,7 @@
 
 <body class="h-full bg-white flex flex-col justify-between">
 
-    <div class="bg-slate-900  h-20 w-screen text-white flex flex-row items-center">
+    <div class="bg-slate-900  h-20 w-full text-white flex flex-row items-center">
         <a class="basis-80 text-2xl border-r border-1 border-white text-center p-2 mx-4 h-full flex items-center">Θεατρική
             Ομάδα «Εμείς»</a>
 
@@ -75,7 +75,7 @@
     </div>
 
 
-    <div class="self-end bg-white w-screen h-16 flex flex-row justify-evenly border border-t-1 border-slate-900 py-2">
+    <div class="self-end bg-white w-full h-16 flex flex-row justify-evenly  border-t border-slate-900 py-2">
         <img src="{{ asset('images/epsilon-singular.png') }}">
         <img src="{{ asset('images/epsilon-singular.png') }}">
         <img src="{{ asset('images/space.png') }}">
