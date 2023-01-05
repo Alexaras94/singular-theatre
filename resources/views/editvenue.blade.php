@@ -2,9 +2,9 @@
 
 
 @section('content')
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center mt-20">
 
-        <p class="text-center mb-16 font-bold underline text-xl">Επεξεργασία Παράστασης</p>
+        <p class="text-center mb-16 font-bold underline text-xl text-white">Επεξεργασία Παράστασης</p>
 
         <form class="grid lg:grid-cols-2 gap-3 mb-36" id="edit_form" method="POST"
             action="{{ route('venues.update', 'venue') }}">
@@ -23,7 +23,7 @@
 
 
             <select required name="venue_id" id="venue_id" onchange="fillInputs({{ $venues }})"
-                class="lg:col-span-2 w-1/2 justify-self-center m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                class="lg:col-span-2 w-1/2 justify-self-center m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
                 <option value="" hidden>
                     Επιλέξτε παράσταση
@@ -39,26 +39,26 @@
 
 
             {{-- <input type="text" name="title" id="title" placeholder="Τίτλος"
-                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0"> --}}
+                class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0"> --}}
 
             <input type="number" name="capacity" id="capacity" placeholder="Χωρητικότητα"
-                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
             <input type="text" name="location" id="location" placeholder="Τοποθεσία"
-                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
             <input type="date" name="venue_date" id="venue_date" placeholder="Ημερομηνία"
-                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
             <input type="time" name="venue_time" id="venue_time" placeholder="Ώρα"
-                class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
 
-            <button class='w-4/6  bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg' type='submit'
-                form="edit_form">Αποθήκεσυη</button>
+            <button class='w-4/6  bg-positive text-white justify-self-center p-2 mt-4 rounded-lg active:bg-b-positive'
+                type='submit' form="edit_form">Αποθήκεσυη</button>
 
-            <button class='w-4/6  bg-red-800 text-white justify-self-center p-2 mt-4 rounded-lg' type='submit'
-                form="delete_form">Διαγραφή</button>
+            <button class='w-4/6  bg-slg-red text-white justify-self-center p-2 mt-4 rounded-lg active:bg-button'
+                type='submit' form="delete_form">Διαγραφή</button>
 
         </form>
 
@@ -66,7 +66,7 @@
             @method('DELETE')
             @csrf
 
-            <input type="hidden" name="hidden_id" id="hidden_id">
+            <input required type="hidden" name="hidden_id" id="hidden_id">
         </form>
 
     </div>

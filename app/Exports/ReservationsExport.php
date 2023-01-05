@@ -13,30 +13,17 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpParser\Node\Expr\Cast\Object_;
 
 
-class ReservationsExport implements FromCollection, withHeadings, ShouldAutoSize, WithStyles,WithMapping
+class ReservationsExport implements FromCollection, withHeadings, ShouldAutoSize, WithStyles, WithMapping
 {
-
-
-
-
-
     public function collection()
     {
-
-
-
         return Reservation::with('venue')->get();
     }
 
 
-
-
-
-
-
     public function headings(): array
     {
-        return ['Παράσταση', 'Ημερομηνία Παράστασης', 'Ώρα Παράστασης', 'Όνομα', 'Αριθμός Θέσεων','Εταιρεία', 'Email','Αριθμός Τηλεφώνου'];
+        return ['Παράσταση', 'Ημερομηνία Παράστασης', 'Ώρα Παράστασης', 'Όνομα', 'Αριθμός Θέσεων', 'Εταιρεία', 'Email', 'Αριθμός Τηλεφώνου'];
     }
 
     public function styles(Worksheet $sheet)
@@ -49,15 +36,15 @@ class ReservationsExport implements FromCollection, withHeadings, ShouldAutoSize
 
     public function map($reservation): array
     {
-       return [
-           $reservation->venue_id,
-       $reservation->venue->venue_date,
-       $reservation->venue->venue_time,
-       $reservation->username,
-       $reservation->number_of_seats,
-       $reservation->company,
-       $reservation->email,
-       $reservation->phone_number
-       ];
+        return [
+            $reservation->venue_id,
+            $reservation->venue->venue_date,
+            $reservation->venue->venue_time,
+            $reservation->username,
+            $reservation->number_of_seats,
+            $reservation->company,
+            $reservation->email,
+            $reservation->phone_number
+        ];
     }
 }
