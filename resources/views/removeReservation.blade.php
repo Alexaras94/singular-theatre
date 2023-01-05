@@ -3,11 +3,11 @@
 
 @section('content')
     <div class="flex flex-col items-center">
-        <div class="text-center w-4/6 border border-1 border-slate-900 mb-10 mt-16">
+        <div class="text-center w-4/6 bg-card rounded-2xl my-3 text-white shadow-xl shadow-shadow">
 
             <p class="text-xl my-3">Ακύρωση κράτησης για την θεατρική παράσταση</p>
             <h1 class="text-3xl underline mt-3"><strong>Interview</strong></h1>
-            <p class="text-md mt-1">Ομάδα «Εμείς»</p>
+            <p class="text-md mt-1">της ομάδας «Εμείς»</p>
             <p class="m-5 text-lg">
                 Η θεατρική ομάδα των εταιρειών SingularLogic και Epsilon Singularlogic παρουσιάζει στις 29 και 30
                 Ιανουαρίου καθώς και 2 και 5 Φεβρουαρίου 2023 το έργο «Interview» γραμμένο από την Ομάδα «Εμείς»,
@@ -23,7 +23,7 @@
             </p>
         </div>
 
-        <div class="my-4 w-1/2 mb-14">
+        <div class="mt-8 w-1/2">
 
             <form class="grid lg:grid-cols-2 gap-3" action="{{ route('reservations.destroy', 'reservation') }}"
                 method="POST">
@@ -31,7 +31,7 @@
                 @csrf
 
                 <select required name="venue_id" id="venue_id"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                    class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
                     <option value="" hidden>
                         Επιλέξτε ημερομηνία
                     </option>
@@ -44,13 +44,14 @@
                 </select>
 
                 <input required type="email" name="email" placeholder="Email"
-                    class="m-3 border-2 border-slate-900 rounded-lg focus:border-slate-900 focus:ring-0">
+                    class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
 
 
 
                 <button type="submit"
-                    class="w-1/3 lg:col-span-2 bg-slate-900 text-white justify-self-center p-2 mt-4 rounded-lg"> Ακύρωση
+                    class="w-1/4 lg:col-span-2 bg-slg-red text-white justify-self-center p-2 mt-4 rounded-lg active:bg-button">
+                    Ακύρωση
                     Κράτησης</button>
 
             </form>
