@@ -169,7 +169,7 @@
 
 
     <footer class="self-center bg-footer  grid grid-cols-4 gap-3 py-2 items-center">
-        <img src="{{ asset('images/epsilon-slg.png') }}" class="md:h-12  h-8">
+        <img src="{{ asset('images/epsilon-slg.png') }}" class="md:h-14  h-9">
         <img src="{{ asset('images/epsilon.png') }}" class="md:h-12  h-8">
         <img src="{{ asset('images/space.png') }}" class="md:h-10  h-6">
         <img src="{{ asset('images/slg.png') }}" class="md:h-12  h-8">
