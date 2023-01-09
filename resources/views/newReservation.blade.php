@@ -12,7 +12,7 @@
 
 
     <div class="flex flex-col items-center">
-        <div class="text-center w-4/6 bg-card rounded-2xl my-3 text-white shadow-xl shadow-shadow">
+        <div class="text-center w-4/6 bg-card rounded-2xl my-6 text-white shadow-xl shadow-shadow">
 
             <p class="text-xl my-3">Κράτηση θέσεων στην θεατρική παράσταση</p>
             <h1 class="text-3xl underline mt-3"><strong>Interview</strong></h1>
@@ -32,7 +32,7 @@
             </p>
         </div>
 
-
+        <p class='text-white font-semibold mt-6 px-2 text-xl border-b border-white'>Κράτηση Θέσεων</p>
 
         <div class="mt-8 w-3/6">
             <form class="grid lg:grid-cols-2 gap-1" action="{{ route('reservations.store') }}" method="post">
@@ -113,7 +113,7 @@
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <button type="submit"
-                    class="w-1/6 lg:col-span-2 bg-slg-red text-white justify-self-center p-2 mt-4 rounded-lg active:bg-button">Κράτηση</button>
+                    class="lg:col-span-2 bg-slg-red text-white justify-self-center p-2 mt-4 rounded-lg active:bg-button">Κράτηση</button>
 
 
 

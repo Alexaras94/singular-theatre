@@ -25,6 +25,7 @@ module.exports = {
             button: "#b42b18",
             positive: "#0077ff",
             "b-positive": "#006be6",
+            gray: "#ddd",
         },
     },
 
