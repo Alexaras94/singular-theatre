@@ -26,12 +26,12 @@ Route::get("/", function () {
 });
 
 
-// Route::get("/resgister", function () {
-//     if (Auth::user()) {
-//         return redirect('venues/create');
-//     };
-//     return redirect('/reservations');
-// });
+Route::get("/resgister", function () {
+    if (Auth::user()) {
+        return redirect('venues/create');
+    };
+    return redirect('/reservations');
+});
 
 
 //
