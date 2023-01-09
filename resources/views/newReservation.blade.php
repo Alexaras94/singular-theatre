@@ -12,7 +12,8 @@
 
 
     <div class="flex flex-col items-center">
-        <div class="text-center w-4/6 bg-card rounded-2xl my-6 text-white shadow-xl shadow-shadow">
+        <div
+            class="text-center w-4/6 bg-card rounded-2xl my-6 text-white shadow-xl shadow-shadow max-md:max-h-72 max-md:overflow-y-scroll">
 
             <p class="text-xl my-3">Κράτηση θέσεων στην θεατρική παράσταση</p>
             <h1 class="text-3xl underline mt-3"><strong>Interview</strong></h1>
@@ -39,22 +40,24 @@
 
                 @csrf
                 @if (session('status') == 'success')
-                    <p class="text-green-600 font-bold lg:col-span-2 text-center justify-self-center">
+                    <p class="text-success font-bold lg:col-span-2 text-center justify-self-center">
                         Η κράτησή σας πραγματοποιήθηκε με επιτυχία!
                     </p>
                 @elseif(session('status') == 'fail')
-                    <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
+                    <p class="text-slg-red font-bold lg:col-span-2 text-center justify-self-center">
                         Η κράτηση απέτυχε.
                     </p>
                 @elseif(session('status') == 'invalid number of seats')
-                    <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
+                    <p class="text-slg-red font-bold lg:col-span-2 text-center justify-self-center">
                         Οι διαθέσιμες θέσεις δεν είναι αρκετές για την πραγματποίηση της κράτησής σας! ()
                     </p>
                 @elseif(session('status') == 'repeated')
-                    <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
+                    <p class="text-slg-red font-bold lg:col-span-2 text-center justify-self-center">
                         Υπάρχει ήδη κράτηση για το συγκεκριμένο email!
                     </p>
                 @endif
+
+
 
                 <select required name="venue_id" id="venue_id"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
@@ -113,7 +116,7 @@
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <button type="submit"
-                    class="lg:col-span-2 bg-slg-red text-white justify-self-center p-2 mt-4 rounded-lg active:bg-button">Κράτηση</button>
+                    class="lg:col-span-2 bg-slg-red text-white justify-self-center p-2 my-4 rounded-lg active:bg-button">Κράτηση</button>
 
 
 

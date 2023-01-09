@@ -103,38 +103,61 @@
             </div>
         </div>
 
-        <div class="hidden mobile-menu">
+        <div class="hidden sm:hidden mobile-menu border-t-2 border-slg-blue">
             <ul class="">
                 @if (Auth::user())
-                    <li class="mx-3">
+                    <li class="my-3 text-center">
                         <a class="{{ request()->is('venues/create') ? 'font-bold text-slg-blue block' : 'block' }}"
                             href="{{ route('venues.create') }}">Προσθήκη Παράστασης</a>
                     </li>
 
-                    <li class="mx-3">
+                    <li class="my-3 text-center">
                         <a class="{{ request()->is('venues/venue/edit') ? 'font-bold text-slg-blue block' : 'block' }}"
                             href="{{ route('venues.edit', 'venue') }}">Επεξεργασία
                             Παράστασης</a>
                     </li>
 
-                    <li class="mx-3">
+                    <li class="my-3 text-center">
                         <a class="block" href="{{ route('reservation.export') }}">Λήψη Κρατήσεων</a>
                     </li>
                 @else
-                    <li class="mx-3">
+                    <li class="my-3 text-center">
                         <a class="{{ request()->is('reservations') ? 'font-bold text-slg-blue block' : 'block' }}"
                             href="/reservations">Πραγματοποίηση
                             Κράτησης</a>
                     </li>
 
 
-                    <li class="mx-3">
+                    <li class="my-3 text-center">
                         <a class="{{ request()->is('reservations/create') ? 'font-bold text-slg-blue block' : 'block' }}"
                             href="{{ route('reservations.create') }}">Ακύρωση Κράτησης</a>
                     </li>
                 @endif
             </ul>
+
+            <div class="underline text-center border-t border-dashed border-slg-blue py-2">
+                @if (Route::has('login'))
+                    <div class="">
+                        @auth
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a class="" href="route('logout')"
+                                    onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                                    Log&nbsp;out
+                                </a>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="">Log&nbsp;in</a>
+
+
+                        @endauth
+                    </div>
+                @endif
+            </div>
         </div>
+
 
     </header>
 

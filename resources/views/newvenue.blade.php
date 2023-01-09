@@ -11,14 +11,15 @@
             @csrf
 
             @if (session('status') == 'success')
-                <p class="text-green-600 font-bold lg:col-span-2 text-center justify-self-center">
+                <p class="text-success font-bold lg:col-span-2 text-center justify-self-center">
                     Η παράσταση αποθηκεύτηκε επιτυχώς!
                 </p>
             @elseif(session('status') == 'fail')
-                <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
+                <p class="text-slg-red font-bold lg:col-span-2 text-center justify-self-center">
                     Η παράσταση δεν αποθηκεύτηκε.
                 </p>
             @endif
+
 
             {{-- <input required type="text" name="title" placeholder="Τίτλος"
                 class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
@@ -43,11 +44,10 @@
 
 
             <button type="submit"
-                class="w-1/3 lg:col-span-2 bg-slg-red text-white justify-self-center p-2 mt-4 rounded-lg active:bg-button"
-                action>
+                class="lg:col-span-2 bg-slg-red text-white justify-self-center p-2 my-4 rounded-lg active:bg-button" action>
                 Αποθήκευση </button>
 
-            {{-- <a class="underline lg:col-span-2 text-center mt-2" href="">Νέα ημερομηνία υπάρχουσας παράστασης</a> --}}
+
 
         </form>
     </div>

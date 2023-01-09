@@ -12,18 +12,18 @@
             @csrf
 
             @if (session('status') == 'success')
-                <p class="text-green-600 font-bold lg:col-span-2 text-center justify-self-center">
+                <p class="text-success font-bold lg:col-span-2 text-center justify-self-center">
                     Οι αλλαγές αποθηκεύτηκαν επιτυχώς!
                 </p>
             @elseif(session('status') == 'fail')
-                <p class="text-red-600 font-bold lg:col-span-2 text-center justify-self-center">
+                <p class="text-slg-red font-bold lg:col-span-2 text-center justify-self-center">
                     Οι αλλαγές δεν αποθηκεύτηκαν!
                 </p>
             @endif
 
 
             <select required name="venue_id" id="venue_id" onchange="fillInputs({{ $venues }})"
-                class="lg:col-span-2 w-1/2 justify-self-center m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
+                class="lg:col-span-2 lg:w-1/2 justify-self-center m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
                 <option value="" hidden>
                     Επιλέξτε παράσταση
@@ -54,11 +54,11 @@
                 class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
 
-            <button class='w-4/6  bg-positive text-white justify-self-center p-2 mt-4 rounded-lg active:bg-b-positive'
+            <button class='bg-positive text-white justify-self-center p-2 mt-4 rounded-lg active:bg-b-positive'
                 type='submit' form="edit_form">Αποθήκεσυη</button>
 
-            <button class='w-4/6  bg-slg-red text-white justify-self-center p-2 mt-4 rounded-lg active:bg-button'
-                type='submit' form="delete_form">Διαγραφή</button>
+            <button class='bg-slg-red text-white justify-self-center p-2 my-4 rounded-lg active:bg-button' type='submit'
+                form="delete_form">Διαγραφή</button>
 
         </form>
 

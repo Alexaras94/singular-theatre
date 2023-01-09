@@ -26,6 +26,7 @@ module.exports = {
             positive: "#0077ff",
             "b-positive": "#006be6",
             gray: "#ddd",
+            success: "#00e64d",
         },
     },
 
