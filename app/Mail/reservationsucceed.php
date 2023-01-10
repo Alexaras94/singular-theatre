@@ -49,7 +49,7 @@ class reservationsucceed extends Mailable
         return new Content(
 //          redirect()->route('reservations.index)
             //redirect()->route('login')
-            view:'newvenue'
+            view:'Mails.ReservationSuccess'
         );
     }
 
