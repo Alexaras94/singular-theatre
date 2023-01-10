@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Exports\ReservationsExport;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\StoreVenueRequest;
+use App\Mail\reservationsucceed;
 use App\Models\Reservation;
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -60,7 +62,8 @@ class ReservationController extends Controller
             return back()->withInput()->with('status', 'invalid number of seats');
         }
 
-        Reservation::create($request->validated());
+        $newreservation=Reservation::create($request->validated());
+        Mail::to('alexispavlopoulos@gmail.com')->send(new reservationsucceed($newreservation));
 
         return redirect()->to('/reservations')->with('status', 'success');
     }
