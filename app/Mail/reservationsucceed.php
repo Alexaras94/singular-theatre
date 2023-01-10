@@ -14,6 +14,7 @@ class reservationsucceed extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $reservation;
     /**
      * Create a new message instance.
      *
@@ -21,7 +22,7 @@ class reservationsucceed extends Mailable
      */
     public function __construct(Reservation $reservation)
     {
-        $this->Reservation=$reservation;
+        $this->reservation = $reservation;
         //
     }
 
@@ -34,7 +35,7 @@ class reservationsucceed extends Mailable
     {
         return new Envelope(
             subject: 'Επιτυχής Κράτηση',
-//            from: new Address ('singulartheatre@test.com','Θεατρική Ομάδα')
+
 
         );
     }
@@ -47,9 +48,7 @@ class reservationsucceed extends Mailable
     public function content()
     {
         return new Content(
-//          redirect()->route('reservations.index)
-            //redirect()->route('login')
-            view:'Mails.ReservationSuccess'
+            markdown: 'Mails.ReservationSuccess'
         );
     }
 
@@ -63,10 +62,11 @@ class reservationsucceed extends Mailable
         return [];
     }
 
-    public function build(){
+    public function build()
+    {
 
-        $subject="Επιτυχής Κράτηση";
+        $subject = "Επιτυχής Κράτηση";
         return $this
-            ->subject($subject);
+            ->subject($subject)->with('reservation', $this->reservation);
     }
 }

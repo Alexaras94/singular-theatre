@@ -70,7 +70,7 @@
             </div>
 
 
-            <div class="hidden sm:block text-right underline pr-2">
+            <div class="hidden sm:block text-right underline mr-6">
                 @if (Route::has('login'))
                     <div class="">
                         @auth

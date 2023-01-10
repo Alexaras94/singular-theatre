@@ -62,8 +62,8 @@ class ReservationController extends Controller
             return back()->withInput()->with('status', 'invalid number of seats');
         }
 
-        $newreservation=Reservation::create($request->validated());
-        Mail::to('alexispavlopoulos@gmail.com')->send(new reservationsucceed($newreservation));
+        $newreservation = Reservation::create($request->validated());
+        Mail::to($request->get('email'))->send(new reservationsucceed($newreservation));
 
         return redirect()->to('/reservations')->with('status', 'success');
     }
