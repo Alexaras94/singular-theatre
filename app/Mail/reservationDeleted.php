@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class reservationsucceed extends Mailable
+class reservationDeleted extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -36,7 +36,7 @@ class reservationsucceed extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Επιτυχής Κράτηση',
+            subject: 'Ακύρωση Κράτησης',
 
 
         );
@@ -50,7 +50,7 @@ class reservationsucceed extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'Mails.ReservationSuccess'
+            markdown: 'Mails.DeletedReservation'
         );
     }
 
@@ -67,7 +67,7 @@ class reservationsucceed extends Mailable
     public function build()
     {
 
-        $subject = "Επιτυχής Κράτηση";
+        $subject = "Ακύρωση Κράτησης";
         return $this
             ->subject($subject)->with(['reservation' => $this->reservation, 'venue' => $this->venue]);
     }

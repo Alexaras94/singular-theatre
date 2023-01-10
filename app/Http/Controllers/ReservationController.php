@@ -6,6 +6,7 @@ use App\Exports\ReservationsExport;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\StoreVenueRequest;
 use App\Mail\reservationsucceed;
+use App\Mail\reservationDeleted;
 use App\Models\Reservation;
 use App\Models\Venue;
 use Illuminate\Http\Request;
@@ -63,7 +64,7 @@ class ReservationController extends Controller
         }
 
         $newreservation = Reservation::create($request->validated());
-        Mail::to($request->get('email'))->send(new reservationsucceed($newreservation));
+        Mail::to($request->get('email'))->send(new reservationsucceed($newreservation, $venue));
 
         return redirect()->to('/reservations')->with('status', 'success');
     }
@@ -116,8 +117,11 @@ class ReservationController extends Controller
      */
     public function destroy($a, Request $request)
     {
+        $venue = Venue::find($request->get('venue_id'));
+        $reservation = Reservation::where('venue_id', $request->get('venue_id'))->where('email', $request->get('email'))->first();
+        $reservation->delete();
+        Mail::to($request->get('email'))->send(new reservationDeleted($reservation, $venue));
 
-        Reservation::where('venue_id', $request->get('venue_id'))->where('email', $request->get('email'))->first()->delete();
         return redirect()->to('/reservations');
     }
 
