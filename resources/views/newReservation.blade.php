@@ -68,7 +68,18 @@
                     @foreach ($venues as $venue)
                         @if ($venue->status == 'ACTIVE')
                             <option value="{{ $venue->id }}" style="color:{{ $helper->DropDownColour($venue) }} ">
+                            @if( $helper->DropDownColour($venue)=="#FF3333")
+                                    {{ $venue->venue_date . " (Απομένουν " .$venue->free_seats ." θέσεις)" }}
+                                @else
                                 {{ $venue->venue_date }}
+                                @endif
+
+
+
+{{--                                 //@isset($helper->DropDownColour($venue)[1])? {{$venue->venue_date . $helper->DropDownColour($venue)[1] }}  : {{ $venue->venue_date  }}--}}
+
+
+
                             </option>
                         @else
                             <option value="{{ $venue->id }}" disabled>

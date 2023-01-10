@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('CheckDates:Current')->everyTwoMinutes()->withoutOverlapping();
+        $schedule->command('CheckDates:Current')->Hourly()->withoutOverlapping();
         // $schedule->command('inspire')->hourly();
     }
 

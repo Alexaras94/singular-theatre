@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Venue;
 use Carbon\Carbon;
-use function GuzzleHttp\Promise\each_limit;
 
 class CheckDates extends Command
 {
@@ -30,7 +29,7 @@ class CheckDates extends Command
      */
     public function handle()
     {
-        $venues = Venue::all();
+        $venues = Venue::where('STATUS','=','ACTIVE')->get();
         foreach ($venues as $venue){
             $venueDateTime=Carbon::parse(strtotime("$venue->venue_date $venue->venue_time"));
             $currentTime=Carbon::now();
