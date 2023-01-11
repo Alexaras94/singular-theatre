@@ -2,6 +2,9 @@
 
 
 @section('content')
+
+
+
     <div class="flex flex-col items-center">
         <div
             class="text-center w-4/6 bg-card rounded-2xl my-6 text-white shadow-xl shadow-shadow max-md:max-h-72 max-md:overflow-y-scroll">
@@ -32,6 +35,13 @@
                 method="POST">
                 @method('DELETE ')
                 @csrf
+
+
+                @if (session('status') == 'fail')
+                    <p class="text-slg-red font-bold lg:col-span-2 text-center justify-self-center">
+                        Δεν βρέθηκε κράτηση με το συγκεκριμένο email για αυτή την ημερομηνία
+                    </p>
+                @endif
 
                 <select required name="venue_id" id="venue_id"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">

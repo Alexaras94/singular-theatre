@@ -55,6 +55,10 @@
                     <p class="text-slg-red font-bold lg:col-span-2 text-center justify-self-center">
                         Υπάρχει ήδη κράτηση για το συγκεκριμένο email!
                     </p>
+                @elseif(session('status') == 'deleted')
+                    <p class="text-success font-bold lg:col-span-2 text-center justify-self-center">
+                       Η κράτηση σας διαγράφηκε.
+                    </p>
                 @endif
 
 
@@ -73,12 +77,6 @@
                                 @else
                                 {{ $venue->venue_date }}
                                 @endif
-
-
-
-{{--                                 //@isset($helper->DropDownColour($venue)[1])? {{$venue->venue_date . $helper->DropDownColour($venue)[1] }}  : {{ $venue->venue_date  }}--}}
-
-
 
                             </option>
                         @else
