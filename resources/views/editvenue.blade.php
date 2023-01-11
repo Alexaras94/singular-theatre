@@ -54,8 +54,8 @@
                 class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
 
-            <button class='bg-positive text-white justify-self-center p-2 mt-4 rounded-lg active:bg-b-positive'
-                type='submit' form="edit_form">Αποθήκεσυη</button>
+            <button class='bg-positive text-white justify-self-center p-2 my-4 rounded-lg active:bg-b-positive'
+                type='submit' form="edit_form">Αποθήκευση</button>
 
             <button class='bg-slg-red text-white justify-self-center p-2 my-4 rounded-lg active:bg-button' type='submit'
                 form="delete_form">Διαγραφή</button>

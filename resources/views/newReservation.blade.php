@@ -57,7 +57,7 @@
                     </p>
                 @elseif(session('status') == 'deleted')
                     <p class="text-success font-bold lg:col-span-2 text-center justify-self-center">
-                       Η κράτηση σας διαγράφηκε.
+                        Η κράτηση σας διαγράφηκε.
                     </p>
                 @endif
 
@@ -81,7 +81,11 @@
                             </option>
                         @else
                             <option value="{{ $venue->id }}" disabled>
-                                {{ $venue->venue_date }}
+                                @if ($venue->free_seats == 0)
+                                    {{ $venue->venue_date . ' (SOLD OUT)' }}
+                                @else
+                                    {{ $venue->venue_date . ' (Περασμένη ημερομηνία)' }}
+                                @endif
                             </option>
                         @endif
                     @endforeach
