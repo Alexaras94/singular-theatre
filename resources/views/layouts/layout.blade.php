@@ -80,7 +80,7 @@
                                 <a class="" href="route('logout')"
                                     onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                                    Log out
+                                    Log&nbsp;out
                                 </a>
                             </form>
                         @else
