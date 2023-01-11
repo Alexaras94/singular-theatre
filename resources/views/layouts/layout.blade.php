@@ -22,15 +22,18 @@
     <header class="flex flex-col ">
 
         <div class="flex justify-between items-center px-6">
-            <img src="{{ asset('images/slg.png') }}" class="lg:h-12 sm:h-8 h-6">
+            <a href="https://portal.singularlogic.eu/en"><img src="{{ asset('images/slg.png') }}"
+                    class="lg:h-12 sm:h-8 h-6"></a>
             <a class="text-slg-blue text-center
                 lg:text-4xl sm:text-3xl text-xl font-medium">Θεατρική
                 Ομάδα</a>
-            <img src="{{ asset('images/epsilon-slg.png') }}" class="lg:h-16 sm:h-10 h-8">
+            <a href="https://epsilon-singularlogic.eu/"><img src="{{ asset('images/epsilon-slg.png') }}"
+                    class="lg:h-16 sm:h-10 h-8"></a>
         </div>
 
         <div class="border-t border-slg-blue h-16  flex flex-row items-center justify-between">
-            <img src="{{ asset('images/masks.png') }}" class="lg:h-28 lg:mx-20 h-20 mx-10">
+            <a href="{{ Auth::user() ? route('venues.create') : route('reservations.index') }}"><img
+                    src="{{ asset('images/masks.png') }}" class="lg:h-28 lg:mx-20 h-20 mx-10"></a>
 
 
             <div class="hidden sm:block basis-4/5 mx-4" id="navbarSupportedContent">
@@ -169,10 +172,12 @@
 
 
     <footer class="self-center bg-footer  grid grid-cols-4 gap-3 py-2 items-center">
-        <img src="{{ asset('images/epsilon-slg.png') }}" class="md:h-14  h-9">
-        <img src="{{ asset('images/epsilon.png') }}" class="md:h-12  h-8">
-        <img src="{{ asset('images/space.png') }}" class="md:h-10  h-6">
-        <img src="{{ asset('images/slg.png') }}" class="md:h-12  h-8">
+        <a href="https://epsilon-singularlogic.eu/"><img src="{{ asset('images/epsilon-slg.png') }}"
+                class="md:h-14  h-9"></a>
+        <a href="https://www.epsilonnet.gr/"><img src="{{ asset('images/epsilon.png') }}" class="md:h-12  h-8"></a>
+        <a href="https://www.space.gr/en"><img src="{{ asset('images/space.png') }}" class="md:h-10  h-6"></a>
+        <a href="https://portal.singularlogic.eu/en"> <img src="{{ asset('images/slg.png') }}"
+                class="md:h-12  h-8"></a>
     </footer>
 
 
