@@ -54,7 +54,7 @@
                     @else
                         <li class="mx-3">
                             <a class="{{ request()->is('reservations') ? 'font-bold text-slg-blue' : '' }}"
-                                href="/reservations">Πραγματοποίηση
+                                href="{{ route('reservations') }}">Πραγματοποίηση
                                 Κράτησης</a>
                         </li>
 
