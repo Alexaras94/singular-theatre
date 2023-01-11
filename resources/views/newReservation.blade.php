@@ -72,10 +72,10 @@
                     @foreach ($venues as $venue)
                         @if ($venue->status == 'ACTIVE')
                             <option value="{{ $venue->id }}" style="color:{{ $helper->DropDownColour($venue) }} ">
-                            @if( $helper->DropDownColour($venue)=="#FF3333")
-                                    {{ $venue->venue_date . " (Απομένουν " .$venue->free_seats ." θέσεις)" }}
+                                @if ($helper->DropDownColour($venue) == '#FF3333')
+                                    {{ $venue->venue_date . ' (Απομένουν ' . $venue->free_seats . ' θέσεις)' }}
                                 @else
-                                {{ $venue->venue_date }}
+                                    {{ $venue->venue_date }}
                                 @endif
 
                             </option>
@@ -91,7 +91,7 @@
                 <input required type="number" name="number_of_seats" min=1 max=4 placeholder="Αριθμός Θέσεων"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
-                <input required type="text" name="username" placeholder="Οναματεπώνυμο"
+                <input required type="text" name="username" placeholder="Ονοματεπώνυμο"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <select required name="company" id="company"

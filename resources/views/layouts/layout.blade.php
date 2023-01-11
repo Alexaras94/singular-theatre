@@ -54,7 +54,7 @@
                     @else
                         <li class="mx-3">
                             <a class="{{ request()->is('reservations') ? 'font-bold text-slg-blue' : '' }}"
-                                href="/reservations">Πραγματοποίηση
+                                href="{{ route('reservations.index') }}">Πραγματοποίηση
                                 Κράτησης</a>
                         </li>
 
@@ -80,7 +80,7 @@
                                 <a class="" href="route('logout')"
                                     onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                                    Log out
+                                    Log&nbsp;out
                                 </a>
                             </form>
                         @else

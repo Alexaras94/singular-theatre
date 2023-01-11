@@ -7,7 +7,7 @@
 
     <div class="flex flex-col items-center">
         <div
-            class="text-center w-4/6 bg-card rounded-2xl my-6 text-white shadow-xl shadow-shadow max-md:max-h-72 max-md:overflow-y-scroll">
+            class="text-center w-7/12 bg-card rounded-2xl my-6 text-white shadow-xl shadow-shadow max-md:max-h-72 max-md:overflow-y-scroll">
 
             <p class="text-xl my-3">Ακύρωση κράτησης για την θεατρική παράσταση</p>
             <h1 class="text-3xl underline mt-3"><strong>Interview</strong></h1>
