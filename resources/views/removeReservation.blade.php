@@ -2,9 +2,6 @@
 
 
 @section('content')
-
-
-
     <div class="flex flex-col items-center">
         <div
             class="text-center w-7/12 bg-card rounded-2xl my-6 text-white shadow-xl shadow-shadow max-md:max-h-72 max-md:overflow-y-scroll">
@@ -15,7 +12,7 @@
             <p class="m-5 text-lg">
                 Η θεατρική ομάδα των εταιρειών SingularLogic και Epsilon Singularlogic παρουσιάζει στις 29 και 30
                 Ιανουαρίου καθώς και 2 και 5 Φεβρουαρίου 2023 το έργο «Interview» γραμμένο από την Ομάδα «Εμείς»,
-                στο θέατρο Αλάμπρα.
+                στο θέατρο Αλάμπρα στις 21:00.
             </p>
 
             <p class="m-5 text-lg">
