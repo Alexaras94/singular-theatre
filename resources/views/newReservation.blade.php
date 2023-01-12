@@ -137,14 +137,18 @@
 
                 <input required type="tel" name="phone_number" placeholder="Κινητό Τηλέφωνο" pattern="69+[0-9]{8}"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
-                <div class="lg:col-span-2 flex">
+
+                <p class="lg:col-span-2 text-white text-xs px-3">Τα στοιχεία Ονοματεπώνυμο, email,
+                    κινητό τηλέφωνο και εταιρία απαιτούνται για τις ανάγκες κράτησης θέσεων και εισόδου στο θέατρο αντί
+                    εισιτηρίου. Τα στοιχεία αυτά δεν θα χρησιμοποιηθούν για κανέναν άλλο σκοπό πέραν του αναφερομένου
+                    και θα διαγραφούν εντός 10 ημερών από την ολοκλήρωση των παραστάσεων.</p>
+
+
+                <div class="lg:col-span-2 flex justify-start items-center">
                     <input required type="checkbox" name="terms"
                         class="m-3 border-2 border-shadow rounded-md focus:border-shadow focus:ring-0 text-success" />
 
-                    <label for="terms" class="text-white text-xs">Αποδέχομαι ότι: Τα στοιχεία Ονοματεπώνυμο, email,
-                        κινητό τηλέφωνο και εταιρία απαιτούνται για τις ανάγκες κράτησης θέσεων και εισόδου στο θέατρο αντί
-                        εισιτηρίου. Τα στοιχεία αυτά δεν θα χρησιμοποιηθούν για κανέναν άλλο σκοπό πέραν του αναφερομένου
-                        και θα διαγραφούν εντός 10 ημερών από την ολοκλήρωση των παραστάσεων.
+                    <label for="terms" class="text-white text-xs">Αποδoχή
                     </label>
                 </div>
 
