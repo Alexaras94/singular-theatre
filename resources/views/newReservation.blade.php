@@ -80,11 +80,11 @@
                                     {{ $venue->venue_date }}
                                 @endif
                             </option>
-                        @elseif ($venue->status=='EXPIRED')
+                        @elseif ($venue->status == 'EXPIRED')
                             <option value="{{ $venue->id }}" disabled>
                                 {{ $venue->venue_date . ' (Περασμένη ημερομηνία)' }}
                             </option>
-                        @elseif ($venue->status=='SOLD OUT')
+                        @elseif ($venue->status == 'SOLD OUT')
                             <option value="{{ $venue->id }}" disabled>
                                 {{ $venue->venue_date . ' (SOLD OUT)' }}
                             </option>
@@ -100,7 +100,8 @@
                 <input required type="number" name="number_of_seats" min=1 max=4 placeholder="Αριθμός Θέσεων"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
-                <input required type="text" name="username" placeholder="Ονοματεπώνυμο" pattern="[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*+[ ]+[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*" minlength="4" maxlength="20"
+                <input required type="text" name="username" placeholder="Ονοματεπώνυμο"
+                    pattern="[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*+[ ]+[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*" minlength="4" maxlength="20"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <select required name="company" id="company"
@@ -132,9 +133,18 @@
 
                 <input required type="tel" name="phone_number" placeholder="Κινητό Τηλέφωνο" pattern="69+[0-9]{8}"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
+                <div class="lg:col-span-2 flex">
+                    <input required type="checkbox" name="terms"
+                        class="m-3 border-2 border-shadow rounded-md focus:border-shadow focus:ring-0 text-success" />
 
-                {{-- <input required type="checkbox" name="terms"
-                    class="m-3 border-2 border-shadow rounded-sm focus:border-shadow focus:ring-0 text-success" /> --}}
+                    <label for="terms" class="text-white text-xs">Αποδέχομαι ότι: Τα στοιχεία Ονοματεπώνυμο, email,
+                        κινητό τηλέφωνο και εταιρία απαιτούνται για τις ανάγκες κράτησης θέσεων και εισόδου στο θέατρο αντί
+                        εισιτηρίου. Τα στοιχεία αυτά δεν θα χρησιμοποιηθούν για κανέναν άλλο σκοπό πέραν του αναφερομένου
+                        και θα διαγραφούν εντός 10 ημερών από την ολοκλήρωση των παραστάσεων.
+                    </label>
+                </div>
+
+
 
                 <button type="submit"
                     class="lg:col-span-2 bg-slg-red text-white justify-self-center p-2 my-4 rounded-lg active:bg-button">Κράτηση</button>

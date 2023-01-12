@@ -30,6 +30,7 @@ class StoreReservationRequest extends FormRequest
             'phone_number' => 'required',
             'company' => 'required|max:30',
             'venue_id' => 'required|exists:venues,id',
+            'terms' => 'required'
 
         ];
     }

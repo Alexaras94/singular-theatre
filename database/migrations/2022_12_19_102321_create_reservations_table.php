@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('company');
             $table->string('phone_number');
+            $table->enum('terms', ['ON', 'OFF']);
         });
     }
 
