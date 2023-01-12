@@ -59,10 +59,11 @@
                     </p>
                 @endif
 
+
                 @if ($errors->any())
                     {!! implode(
                         '',
-                        $errors->all('<p text-slg-red font-bold lg:col-span-2 text-center justify-self-center>:message</p>'),
+                        $errors->all('<p class= "text-slg-red font-bold lg:col-span-2 text-center justify-self-center">:message</p>'),
                     ) !!}
                 @endif
 

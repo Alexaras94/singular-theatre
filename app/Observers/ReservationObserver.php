@@ -17,8 +17,9 @@ class ReservationObserver
     public function created(Reservation $reservation)
     {
 
-        $venue = $reservation->venue();
-        $free_seats=$venue->free_seats-$reservation->number_of_seats;
+        $venue = $reservation->venue()->first();
+
+        $free_seats=$venue->free_seats - $reservation->number_of_seats;
         if ($free_seats == 0) {
             $venue->update(['free_seats' => $free_seats, 'status' => "SOLD OUT"]);
         } else {
@@ -49,7 +50,7 @@ class ReservationObserver
 
 
 
-        $venue = $reservation->venue();
+        $venue = $reservation->venue()->first();
         $free_seats=$venue->free_seats+$reservation->number_of_seats;
 
         if ($free_seats > 0 && $venue->status='SOLD OUT') {
