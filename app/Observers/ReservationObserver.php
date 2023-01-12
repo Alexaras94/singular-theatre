@@ -17,29 +17,14 @@ class ReservationObserver
     public function created(Reservation $reservation)
     {
 
-        $id = $reservation->venue_id;
-
-        $venues = Venue::where('id', $id)->get();
-
-        $seats = Reservation::where('venue_id', $id)->sum('number_of_seats');
-        foreach ($venues as $venue) {
-            $venuecapacity = ($venue->capacity);
-        }
-
-        $free_seats = $venuecapacity - $seats;
+        $venue = $reservation->venue();
+        $free_seats=$venue->free_seats-$reservation->number_of_seats;
         if ($free_seats == 0) {
             $venue->update(['free_seats' => $free_seats, 'status' => "SOLD OUT"]);
         } else {
             $venue->update(['free_seats' => $free_seats]);
         }
 
-
-
-
-
-
-
-        //
     }
 
     /**
@@ -61,23 +46,18 @@ class ReservationObserver
      */
     public function deleted(Reservation $reservation)
     {
-        $id = $reservation->venue_id;
 
-        $venues = Venue::where('id', $id)->get();
 
-        $seats = Reservation::where('venue_id', $id)->sum('number_of_seats');
-        foreach ($venues as $venue) {
-            $venuecapacity = ($venue->capacity);
-        }
 
-        $free_seats = $venuecapacity - $seats;
-        if ($free_seats > 0 && $venue->status == 'SOLD OUT') {
+        $venue = $reservation->venue();
+        $free_seats=$venue->free_seats+$reservation->number_of_seats;
+
+        if ($free_seats > 0 && $venue->status='SOLD OUT') {
             $venue->update(['free_seats' => $free_seats, 'status' => "ACTIVE"]);
         } else {
             $venue->update(['free_seats' => $free_seats]);
         }
     }
-
     /**
      * Handle the Reservation "restored" event.
      *
