@@ -24,7 +24,7 @@ class StoreReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required',
+            'username' => 'required|string|min:5|max:30',
             'number_of_seats' => 'required|numeric|min:1|max:4',
             'email' => 'required',
             'phone_number' => 'required',

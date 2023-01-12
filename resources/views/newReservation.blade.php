@@ -6,9 +6,7 @@
 
 @section('content')
     @inject('helper', \App\helper\FreeSeatsHelper::class)
-    @if ($errors->any())
-        {!! implode('', $errors->all('<div>:message</div>')) !!}
-    @endif
+
 
 
     <div class="flex flex-col items-center">
@@ -61,6 +59,10 @@
                     </p>
                 @endif
 
+                @if ($errors->any())
+                    {!! implode('', $errors->all('<div>:message</div>')) !!}
+                @endif
+
 
 
                 <select required name="venue_id" id="venue_id"
@@ -98,7 +100,7 @@
                 <input required type="number" name="number_of_seats" min=1 max=4 placeholder="Αριθμός Θέσεων"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
-                <input required type="text" name="username" placeholder="Ονοματεπώνυμο"
+                <input required type="text" name="username" placeholder="Ονοματεπώνυμο" pattern="[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*+[ ]+[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*" minlength="4" maxlength="20"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <select required name="company" id="company"
@@ -114,10 +116,10 @@
                         Epsilon Singularlogic
                     </option>
                     <option value="Epsilon">
-                        Epsilon
+                        Epsilon Net
                     </option>
                     <option value="Space">
-                        Space
+                        Space Hellas
                     </option>
                     <option value="Άλλο">
                         Άλλο
@@ -128,7 +130,7 @@
                 <input required type="email" name="email" placeholder="Email"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
-                <input required type="text" name="phone_number" placeholder="Κινητό Τηλέφωνο"
+                <input required type="tel" name="phone_number" placeholder="Κινητό Τηλέφωνο" pattern="69+[0-9]{8}"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 {{-- <input required type="checkbox" name="terms"
