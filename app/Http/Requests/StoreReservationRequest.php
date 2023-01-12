@@ -24,10 +24,10 @@ class StoreReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|string|min:5|max:30',
+            'username' => 'required|string|min:8|max:30|regex:/[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*+[ ]+[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*/',
             'number_of_seats' => 'required|numeric|min:1|max:4',
             'email' => 'required',
-            'phone_number' => 'required',
+            'phone_number' => 'required|regex:/69+[0-9]{8}/',
             'company' => 'required|max:30',
             'venue_id' => 'required|exists:venues,id',
             'terms' => 'required'

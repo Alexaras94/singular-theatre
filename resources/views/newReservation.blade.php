@@ -101,7 +101,7 @@
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <input required type="text" name="username" placeholder="Ονοματεπώνυμο"
-                    pattern="[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*+[ ]+[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*" minlength="4" maxlength="20"
+                    pattern="[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*+[ ]+[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*" minlength="8" maxlength="30"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <select required name="company" id="company"
