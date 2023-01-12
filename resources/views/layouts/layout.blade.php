@@ -12,7 +12,9 @@
     <title>Θεατρική Ομάδα</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+   <link rel="stylesheet" href="{{ asset('fonts/nunito-latin-400-normal.woff2') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/nunito-latin-600-normal.woff2') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/nunito-latin-700-normal.woff2') }}">
 
 </head>
 

@@ -77,15 +77,18 @@
                                 @else
                                     {{ $venue->venue_date }}
                                 @endif
-
+                            </option>
+                        @elseif ($venue->status=='EXPIRED')
+                            <option value="{{ $venue->id }}" disabled>
+                                {{ $venue->venue_date . ' (Περασμένη ημερομηνία)' }}
+                            </option>
+                        @elseif ($venue->status=='SOLD OUT')
+                            <option value="{{ $venue->id }}" disabled>
+                                {{ $venue->venue_date . ' (SOLD OUT)' }}
                             </option>
                         @else
                             <option value="{{ $venue->id }}" disabled>
-                                @if ($venue->free_seats == 0)
-                                    {{ $venue->venue_date . ' (SOLD OUT)' }}
-                                @else
-                                    {{ $venue->venue_date . ' (Περασμένη ημερομηνία)' }}
-                                @endif
+                                {{ $venue->venue_date . ' (Ανενεργή)' }}
                             </option>
                         @endif
                     @endforeach

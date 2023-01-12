@@ -34,7 +34,7 @@ class CheckDates extends Command
             $venueDateTime=Carbon::parse(strtotime("$venue->venue_date $venue->venue_time"));
             $currentTime=Carbon::now();
             if ($currentTime->isAfter($venueDateTime)){
-                $venue->STATUS='INACTIVE';
+                $venue->STATUS='EXPIRED';
                 $venue->save();
             }
         }

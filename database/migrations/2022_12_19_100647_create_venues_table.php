@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string("location", 255);
             $table->integer('free_seats')->nullable();
             // $table->string("description");
-            $table->enum('status', ['ACTIVE', 'INACTIVE']);
+            $table->enum('status', ['ACTIVE', 'INACTIVE','EXPIRED','SOLD OUT']);
         });
     }
 
