@@ -29,6 +29,7 @@ class UpdateVenueRequest extends FormRequest
             'venue_time' => 'required',
             'capacity' => 'required',
             'location' => 'required',
+            'status' => 'required',
             // 'description' => 'required'
             //
         ];

@@ -91,8 +91,17 @@ class VenueController extends Controller
     {
 
         $venue = Venue::find($request->get('venue_id'));
+        if ($venue->capacity < $request->get('capacity') && $venue->status == "SOLD OUT") {
+            $new_seats = $request->get('capacity') - $venue->capacity;
+            $venue->update($request->validated() + ['status' => "ACTIVE", 'free_seats' => ($venue->free_seats + $new_seats)]);
+        } else if ($venue->capacity < $request->get('capacity')) {
+            $new_seats = $request->get('capacity') - $venue->capacity;
+            $venue->update($request->validated() + ['free_seats' => ($venue->free_seats + $new_seats)]);
+        } else {
+            $venue->update($request->validated());
+        }
 
-        $venue->update($request->validated() + ['status' => "ACTIVE"]);
+
 
 
         return redirect()->to('/venues/venue/edit')->with('status', 'success');

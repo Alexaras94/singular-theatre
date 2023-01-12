@@ -23,7 +23,7 @@
 
 
             <select required name="venue_id" id="venue_id" onchange="fillInputs({{ $venues }})"
-                class="lg:col-span-2 lg:w-1/2 justify-self-center m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
+                class=" m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
 
                 <option value="" hidden>
                     Επιλέξτε παράσταση
@@ -33,6 +33,27 @@
                         {{ $venue->venue_date }}
                     </option>
                 @endforeach
+
+            </select>
+
+            <select required name="status" id="status"
+                class=" m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
+                <option value="" hidden>
+                    Κατάσταση
+                </option>
+                <option value="SOLD OUT" hidden>
+                    Sold out
+                </option>
+                <option value="EXPIRED" hidden>
+                    Περασμένη ημερομηνία
+                </option>
+                <option value="ACTIVE">
+                    Ενεργή
+                </option>
+                <option value="INACTIVE">
+                    Ανενεργή
+                </option>
+
 
             </select>
 
@@ -85,6 +106,13 @@
         document.getElementById('venue_date').value = v.venue_date;
         document.getElementById('venue_time').value = v.venue_time;
         document.getElementById('hidden_id').value = id;
+        if (v.status == 'ACTIVE' || v.status == 'INACTIVE') {
+            document.getElementById('status').value = v.status;
+        } else {
+            document.getElementById('status').value = v.status;
+            document.getElementById('status').disabled = true;
+        }
+
 
     }
 </script>
