@@ -60,7 +60,10 @@
                 @endif
 
                 @if ($errors->any())
-                    {!! implode('', $errors->all('<div>:message</div>')) !!}
+                    {!! implode(
+                        '',
+                        $errors->all('<p text-slg-red font-bold lg:col-span-2 text-center justify-self-center>:message</p>'),
+                    ) !!}
                 @endif
 
 
