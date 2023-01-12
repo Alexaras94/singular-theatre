@@ -29,12 +29,12 @@ class CheckDates extends Command
      */
     public function handle()
     {
-        $venues = Venue::where('STATUS','=','ACTIVE')->get();
-        foreach ($venues as $venue){
-            $venueDateTime=Carbon::parse(strtotime("$venue->venue_date $venue->venue_time"));
-            $currentTime=Carbon::now();
-            if ($currentTime->isAfter($venueDateTime)){
-                $venue->STATUS='EXPIRED';
+        $venues = Venue::where('STATUS', '=', 'ACTIVE')->get();
+        foreach ($venues as $venue) {
+            $venueDateTime = Carbon::parse(strtotime("$venue->venue_date $venue->venue_time"));
+            $currentTime = Carbon::now();
+            if ($currentTime->isAfter($venueDateTime)) {
+                $venue->status = 'EXPIRED';
                 $venue->save();
             }
         }
