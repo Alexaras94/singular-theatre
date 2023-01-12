@@ -128,8 +128,8 @@
                 <input required type="text" name="phone_number" placeholder="Κινητό Τηλέφωνο"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
-                <input required type="checkbox" name="terms"
-                    class="m-3 border-2 border-shadow rounded-sm focus:border-shadow focus:ring-0 text-success" />
+                {{-- <input required type="checkbox" name="terms"
+                    class="m-3 border-2 border-shadow rounded-sm focus:border-shadow focus:ring-0 text-success" /> --}}
 
                 <button type="submit"
                     class="lg:col-span-2 bg-slg-red text-white justify-self-center p-2 my-4 rounded-lg active:bg-button">Κράτηση</button>
