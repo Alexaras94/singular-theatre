@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('CheckDates:Current')->Hourly()->withoutOverlapping();
+        // $schedule->command('CheckDates:Current')->Hourly()->withoutOverlapping();
         // $schedule->command('inspire')->hourly();
     }
 
@@ -26,11 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
-        Commands\CheckDates::class;
+        $this->load(__DIR__ . '/Commands');
+        // Commands\CheckDates::class;
 
         require base_path('routes/console.php');
     }
-
-
 }
