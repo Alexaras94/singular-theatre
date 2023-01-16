@@ -36,6 +36,10 @@ Route::get("/resgister", function () {
 
 //
 
+Route::get("/poster", function () {
+    return view('poster');
+});
+
 
 Route::resource('reservations', ReservationController::class)->middleware('guest');
 

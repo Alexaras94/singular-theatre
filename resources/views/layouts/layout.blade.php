@@ -12,7 +12,7 @@
     <title>Θεατρική Ομάδα</title>
 
     <!-- Fonts -->
-   <link rel="stylesheet" href="{{ asset('fonts/nunito-latin-400-normal.woff2') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/nunito-latin-400-normal.woff2') }}">
     <link rel="stylesheet" href="{{ asset('fonts/nunito-latin-600-normal.woff2') }}">
     <link rel="stylesheet" href="{{ asset('fonts/nunito-latin-700-normal.woff2') }}">
 
@@ -67,6 +67,10 @@
                         <li class="mx-3">
                             <a class="{{ request()->is('reservations/create') ? 'font-bold text-slg-blue' : '' }}"
                                 href="{{ route('reservations.create') }}">Ακύρωση Κράτησης</a>
+                        </li>
+
+                        <li class="mx-3">
+                            <a href="/poster" target="_blank">Αφίσα Παράστασης</a>
                         </li>
                     @endif
                 </ul>
