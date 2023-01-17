@@ -50,7 +50,7 @@ class reservationDeleted extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'Mails.DeletedReservation'
+            view: 'Mails.DeletedReservation'
         );
     }
 
@@ -66,7 +66,6 @@ class reservationDeleted extends Mailable
 
     public function build()
     {
-
         $subject = "Ακύρωση Κράτησης";
         return $this
             ->subject($subject)->with(['reservation' => $this->reservation, 'venue' => $this->venue]);

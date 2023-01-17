@@ -50,7 +50,7 @@ class reservationsucceed extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'Mails.ReservationSuccess'
+            view: 'Mails.ReservationSuccess'
         );
     }
 
