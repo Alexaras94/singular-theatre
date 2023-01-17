@@ -69,6 +69,6 @@ class reservationsucceed extends Mailable
 
         $subject = "Επιτυχής Κράτηση";
         return $this
-            ->subject($subject)->with(['reservation' => $this->reservation, 'venue' => $this->venue]);
+            ->subject($subject)->attach(asset('images/poster.jpg'))->with(['reservation' => $this->reservation, 'venue' => $this->venue]);
     }
 }

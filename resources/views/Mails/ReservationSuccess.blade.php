@@ -184,8 +184,8 @@
 
                         <!-- END MAIN CONTENT AREA -->
                     </table>
-                    <img class="poster" src="{{ asset('images/poster.jpg') }}" alt="poster"
-                        style="margin-top: 10px; margin-bottom: 10px; width: 100%;">
+                    {{-- <img class="poster" src="{{ asset('images/poster.jpg') }}" alt="poster"
+                        style="margin-top: 10px; margin-bottom: 10px; width: 100%;"> --}}
 
                     <!-- END CENTERED WHITE CONTAINER -->
                 </div>
