@@ -8,6 +8,7 @@ use App\Mail\reservationsucceed;
 use App\Models\Reservation;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Queue\SerializesModels;
 
 class SendEmails extends Command
 {
@@ -36,7 +37,6 @@ class SendEmails extends Command
         foreach ($reservations as $reservation)
         {
             Mail::to($reservation->email)->queue(new reservationsucceed($reservation,$reservation->venue));
-
         }
         return Command::SUCCESS;
     }
