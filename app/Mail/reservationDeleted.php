@@ -25,6 +25,7 @@ class reservationDeleted extends Mailable
     {
         $this->reservation = $reservation;
         $this->venue = $venue;
+
         //
     }
 

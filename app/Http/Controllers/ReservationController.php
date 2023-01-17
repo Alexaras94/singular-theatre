@@ -120,8 +120,12 @@ class ReservationController extends Controller
         $venue = Venue::find($request->get('venue_id'));
         $reservation = Reservation::where('venue_id', $request->get('venue_id'))->where('email', $request->get('email'))->first();
         if ($reservation) {
+
+
+
+            Mail::to($request->get('email'))->queue(new reservationDeleted($reservation, $venue));
+
             $reservation->delete();
-            // Mail::to($request->get('email'))->queue(new reservationDeleted($reservation, $venue));
 
             return redirect()->route('reservations.index')->with('status', 'deleted');;
         }
