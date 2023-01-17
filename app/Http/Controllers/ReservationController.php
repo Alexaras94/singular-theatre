@@ -64,7 +64,7 @@ class ReservationController extends Controller
         }
 
         $newreservation = Reservation::create($request->validated());
-     //   Mail::to($request->get('email'))->queue(new reservationsucceed($newreservation, $venue));
+        Mail::to($request->get('email'))->queue(new reservationsucceed($newreservation, $venue));
 
         return redirect()->to('/reservations')->with('status', 'success');
     }
@@ -119,12 +119,11 @@ class ReservationController extends Controller
     {
         $venue = Venue::find($request->get('venue_id'));
         $reservation = Reservation::where('venue_id', $request->get('venue_id'))->where('email', $request->get('email'))->first();
-        if ($reservation){
-        $reservation->delete();
-       // Mail::to($request->get('email'))->queue(new reservationDeleted($reservation, $venue));
+        if ($reservation) {
+            $reservation->delete();
+            // Mail::to($request->get('email'))->queue(new reservationDeleted($reservation, $venue));
 
-        return redirect()->route('reservations.index')->with('status', 'deleted');;
-
+            return redirect()->route('reservations.index')->with('status', 'deleted');;
         }
 
         return back()->withInput()->with('status', 'fail');

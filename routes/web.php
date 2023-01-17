@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\VenueController;
+use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,6 +40,12 @@ Route::get("/resgister", function () {
 Route::get("/poster", function () {
     return view('poster');
 })->name('poster');
+
+
+
+// Route::get("/mail", function () {
+//     return view('Mails.ReservationSuccess');
+// })->name('mail');
 
 
 Route::resource('reservations', ReservationController::class)->middleware('guest');

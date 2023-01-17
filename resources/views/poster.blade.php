@@ -14,7 +14,7 @@
 </head>
 
 <body class="bg-gray flex justify-center">
-    <img src="{{ asset('images/poster.jpg') }}" alt="" class="h-full">
+    <img src="{{ asset('images/poster.jpg') }}" alt="poster" class="h-full">
 </body>
 
 
