@@ -70,7 +70,7 @@
                         </li>
 
                         <li class="mx-3">
-                            <a href="/poster" target="_blank">Αφίσα Παράστασης</a>
+                            <a href="{{ route('poster') }}" target="_blank">Αφίσα Παράστασης</a>
                         </li>
                     @endif
                 </ul>
