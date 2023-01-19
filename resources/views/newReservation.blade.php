@@ -170,4 +170,65 @@
 
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var elements = document.getElementsByTagName("INPUT");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].oninvalid = function(e) {
+                    e.target.setCustomValidity("");
+                    if (!e.target.validity.valid) {
+                        switch (e.target.name) {
+                            case 'number_of_seats':
+                                e.target.setCustomValidity("Παρακαλώ εισάγετε έναν αριθμό από 1 εώς 4");
+                                break;
+                            case 'username':
+                                e.target.setCustomValidity(
+                                    "Παρακαλώ εισάγετε όνομα και επώνυμο (από 8 εώς 30 χαρακτήρες)");
+                                break;
+                            case 'email':
+                                e.target.setCustomValidity("Παρακαλώ εισάγετε ένα έγκυρο email");
+                                break;
+                            case 'phone_number':
+                                e.target.setCustomValidity(
+                                    "Παρακαλώ εισάγετε έναν έγκυρο αριθμό κινητού τηλεφώνου");
+                                break;
+                            case 'terms':
+                                e.target.setCustomValidity(
+                                    "Παρακαλώ αποδεχτείτε του όρους");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                };
+                elements[i].oninput = function(e) {
+                    e.target.setCustomValidity("");
+                };
+            }
+            var elements = document.getElementsByTagName("SELECT");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].oninvalid = function(e) {
+                    e.target.setCustomValidity("");
+                    if (!e.target.validity.valid) {
+                        switch (e.target.name) {
+                            case 'venue_id':
+                                e.target.setCustomValidity("Παρακαλώ επιλέξτε ημερομηνία παράστασης");
+                                break;
+                            case 'company':
+                                e.target.setCustomValidity(
+                                    "Παρακαλώ επιλέξτε εταιρεία");
+                                break;
+                            default:
+                                break;
+
+                        }
+                    }
+                };
+                elements[i].oninput = function(e) {
+                    e.target.setCustomValidity("");
+                };
+            }
+        })
+    </script>
 @endsection
