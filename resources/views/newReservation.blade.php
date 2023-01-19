@@ -77,7 +77,7 @@
                     </option>
                     @foreach ($venues as $venue)
                         @if ($venue->status == 'ACTIVE')
-                            <option value="{{ $venue->id }}" style="color:{{ $helper->DropDownColour($venue) }} ">
+                            <option value="{{ $venue->id }}" style="color:{{ $helper->DropDownColour($venue) }} " {{ old('venue_id') == $venue->id ? 'selected' : '' }}>
                                 @if ($helper->DropDownColour($venue) == '#FF3333')
                                     {{ $venue->venue_date . ' (Απομένουν ' . $venue->free_seats . ' θέσεις)' }}
                                 @else
@@ -85,7 +85,7 @@
                                 @endif
                             </option>
                         @elseif ($venue->status == 'EXPIRED')
-                            <option value="{{ $venue->id }}" disabled>
+                            <option value="{{ $venue->id }}" disabled >
                                 {{ $venue->venue_date . ' (Περασμένη ημερομηνία)' }}
                             </option>
                         @elseif ($venue->status == 'SOLD OUT')
@@ -101,12 +101,14 @@
 
                 </select>
 
-                <input required type="number" name="number_of_seats" min=1 max=4 placeholder="Αριθμός Θέσεων"
+                <input required type="number" name="number_of_seats" min=1 max=4 placeholder="Αριθμός Θέσεων" value="{{ old('number_of_seats') }}"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
-                <input required type="text" name="username" placeholder="Ονοματεπώνυμο"
+                <input required type="text" name="username" placeholder="Ονοματεπώνυμο" value="{{ old('username') }}"
                     pattern="[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*+[ ]+[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*" minlength="8" maxlength="30"
-                    class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
+                    class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0"/>
+
+
 
                 <select required name="company" id="company"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0">
@@ -114,28 +116,28 @@
                     <option value="" hidden>
                         Επιλέξτε Εταιρεία
                     </option>
-                    <option value="SingularLogic">
+                    <option value="SingularLogic" {{ old('company') == "SingularLogic" ? 'selected' : '' }}>
                         SingularLogic
                     </option>
-                    <option value="Epsilon Singularlogic">
+                    <option value="Epsilon Singularlogic" {{ old('company') == "Epsilon Singularlogic" ? 'selected' : '' }} >
                         Epsilon Singularlogic
                     </option>
-                    <option value="Epsilon">
+                    <option value="Epsilon" {{ old('company') == "Epsilon" ? 'selected' : '' }} >
                         Epsilon Net
                     </option>
-                    <option value="Space">
+                    <option value="Space" {{ old('company') == "Space" ? 'selected' : '' }} >
                         Space Hellas
                     </option>
-                    <option value="Άλλο">
+                    <option value="Άλλο" {{ old('company') == "Άλλο" ? 'selected' : '' }}>
                         Άλλο
                     </option>
 
                 </select>
 
-                <input required type="email" name="email" placeholder="Email"
+                <input required type="email" name="email" placeholder="Email" value="{{ old('email') }}"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
-                <input required type="tel" name="phone_number" placeholder="Κινητό Τηλέφωνο" pattern="69+[0-9]{8}"
+                <input required type="tel" name="phone_number" placeholder="Κινητό Τηλέφωνο" value="{{ old('phone_number') }}" pattern="69+[0-9]{8}"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <p class="lg:col-span-2 text-white text-xs px-3">Τα στοιχεία Ονοματεπώνυμο, email,

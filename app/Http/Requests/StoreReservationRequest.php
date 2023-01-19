@@ -32,6 +32,14 @@ class StoreReservationRequest extends FormRequest
             'venue_id' => 'required|exists:venues,id',
             'terms' => 'required'
 
+            
         ];
+    }
+
+
+    public function messages():array
+    {
+        return ['username.regex'=>'Το Όνοματεπώνυμο πρέπει να ειναι της μορφής "Όνoμα Επίθετο" ',
+            'phone_number.regex'=>'Ο αριθμός του κινητού δεν είναι σωστός'];
     }
 }
