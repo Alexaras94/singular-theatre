@@ -83,15 +83,20 @@
                 @if (Route::has('login'))
                     <div class="">
                         @auth
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                            <div class="flex">
+                                <a href="{{ route('profile.edit') }}" class="mx-5">Προφίλ</a>
+                                <form class="mx-1" method="POST" action="{{ route('logout') }}">
+                                    @csrf
 
-                                <a class="" href="route('logout')"
-                                    onclick="event.preventDefault();
+                                    <a class="" href="route('logout')"
+                                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                                    Log&nbsp;out
-                                </a>
-                            </form>
+                                        Log&nbsp;out
+                                    </a>
+
+                                </form>
+
+                            </div>
                         @else
                             <a href="{{ route('login') }}" class="">Log&nbsp;in</a>
 
@@ -147,6 +152,8 @@
             <div class="underline text-center border-t border-dashed border-slg-blue py-2">
                 @if (Route::has('login'))
                     <div class="">
+
+                        <a href="{{ route('profile.edit') }}" class="">Προφίλ</a>
                         @auth
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

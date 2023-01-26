@@ -141,8 +141,8 @@ class ReservationController extends Controller
 
     public function  export()
     {
-        $reservations=Reservation::with('venue')->get();
-       $this->ExcelDownload($reservations);
+        $reservations = Reservation::with('venue')->get();
+        $this->ExcelDownload($reservations);
     }
 
 
@@ -155,30 +155,33 @@ class ReservationController extends Controller
     {
 
         try {
-           // $reservationsExcel=new Spreadsheet();
-            $excelTemplate =IOFactory::load(public_path("template/reservations.xlsx"));
-            $excelTemplateReservationSheet=$excelTemplate->getSheetByName('Worksheet');
+            // $reservationsExcel=new Spreadsheet();
+            $excelTemplate = IOFactory::load(public_path("template/reservations.xlsx"));
+            $excelTemplateReservationSheet = $excelTemplate->getSheetByName('Worksheet');
             info($excelTemplate->getSheetByName('Sheet1')->getCell('C1'));
-
-
-
-
-
         } catch (\PHPExcel_Reader_Exception $e) {
             dd($e);
         } catch (Exception $e) {
             dd($e);
         }
-        $i=2;
-        foreach ($reservations as $reservation){
-            $excelTemplateReservationSheet->setCellValue('A'.$i,$reservation->venue_id);
-            $excelTemplateReservationSheet->setCellValue('B'.$i,$reservation->venue->venue_date);
-            $excelTemplateReservationSheet->setCellValue('C'.$i,$reservation->venue->venue_time);
-            $excelTemplateReservationSheet->setCellValue('D'.$i,$reservation->username);
-            $excelTemplateReservationSheet->setCellValue('E'.$i,$reservation->number_of_seats);
-            $excelTemplateReservationSheet->setCellValue('F'.$i,$reservation->company);
-            $excelTemplateReservationSheet->setCellValue('G'.$i,$reservation->email);
-            $excelTemplateReservationSheet->setCellValue('H'.$i,$reservation->phone_nuber);
+        $excelTemplateReservationSheet->setCellValue('A' . 1, 'id');
+        $excelTemplateReservationSheet->setCellValue('B' . 1, 'Ημερομηνία');
+        $excelTemplateReservationSheet->setCellValue('C' . 1, 'Ώρα');
+        $excelTemplateReservationSheet->setCellValue('D' . 1, 'Ονοματεπώνυμο');
+        $excelTemplateReservationSheet->setCellValue('E' . 1, 'Θέσεις');
+        $excelTemplateReservationSheet->setCellValue('F' . 1, 'Εταιρεία');
+        $excelTemplateReservationSheet->setCellValue('G' . 1, 'Email');
+        $excelTemplateReservationSheet->setCellValue('H' . 1, 'Τηλέφωνο');
+        $i = 2;
+        foreach ($reservations as $reservation) {
+            $excelTemplateReservationSheet->setCellValue('A' . $i, $reservation->venue_id);
+            $excelTemplateReservationSheet->setCellValue('B' . $i, $reservation->venue->venue_date);
+            $excelTemplateReservationSheet->setCellValue('C' . $i, $reservation->venue->venue_time);
+            $excelTemplateReservationSheet->setCellValue('D' . $i, $reservation->username);
+            $excelTemplateReservationSheet->setCellValue('E' . $i, $reservation->number_of_seats);
+            $excelTemplateReservationSheet->setCellValue('F' . $i, $reservation->company);
+            $excelTemplateReservationSheet->setCellValue('G' . $i, $reservation->email);
+            $excelTemplateReservationSheet->setCellValue('H' . $i, $reservation->phone_number);
 
 
 
@@ -193,26 +196,24 @@ class ReservationController extends Controller
         }
         //
 
-//        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-//        header('Content-Disposition: attachment;filename="newfile.Xlsx"');
+        //        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        //        header('Content-Disposition: attachment;filename="newfile.Xlsx"');
 
 
-         header('Content-Type: application/vnd.ms-excel');
+        header('Content-Type: application/vnd.ms-excel');
 
 
-       // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
 
 
 
-        header('Content-Disposition: attachment;filename="01simple.xls"');
+        header('Content-Disposition: attachment;filename="Reservations.xls"');
         header('Cache-Control: max-age=0');
         try {
             $objWriter->save('php://output');
         } catch (\PhpOffice\PhpSpreadsheet\Writer\Exception $e) {
             dd($e);
         }
-
-
     }
 }
