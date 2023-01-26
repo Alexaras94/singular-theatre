@@ -10,9 +10,15 @@ use App\Mail\reservationDeleted;
 use App\Models\Reservation;
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
+use PhpOffice\PhpSpreadsheet\Exception;
+use \PhpOffice\PhpSpreadsheet\IOFactory;
 
+use Illuminate\Contracts\Database\Eloquent;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 
 class ReservationController extends Controller
@@ -135,6 +141,78 @@ class ReservationController extends Controller
 
     public function  export()
     {
-        return Excel::download(new ReservationsExport, "reservations.xlsx");
+        $reservations=Reservation::with('venue')->get();
+       $this->ExcelDownload($reservations);
+    }
+
+
+    /**
+     * @throws \PHPExcel_Reader_Exception
+     * @throws \PHPExcel_Exception
+     * @throws \PHPExcel_Writer_Exception
+     */
+    public function ExcelDownload(Collection $reservations)
+    {
+
+        try {
+           // $reservationsExcel=new Spreadsheet();
+            $excelTemplate =IOFactory::load(public_path("template/reservations.xlsx"));
+            $excelTemplateReservationSheet=$excelTemplate->getSheetByName('Worksheet');
+            info($excelTemplate->getSheetByName('Sheet1')->getCell('C1'));
+
+
+
+
+
+        } catch (\PHPExcel_Reader_Exception $e) {
+            dd($e);
+        } catch (Exception $e) {
+            dd($e);
+        }
+        $i=2;
+        foreach ($reservations as $reservation){
+            $excelTemplateReservationSheet->setCellValue('A'.$i,$reservation->venue_id);
+            $excelTemplateReservationSheet->setCellValue('B'.$i,$reservation->venue->venue_date);
+            $excelTemplateReservationSheet->setCellValue('C'.$i,$reservation->venue->venue_time);
+            $excelTemplateReservationSheet->setCellValue('D'.$i,$reservation->username);
+            $excelTemplateReservationSheet->setCellValue('E'.$i,$reservation->number_of_seats);
+            $excelTemplateReservationSheet->setCellValue('F'.$i,$reservation->company);
+            $excelTemplateReservationSheet->setCellValue('G'.$i,$reservation->email);
+            $excelTemplateReservationSheet->setCellValue('H'.$i,$reservation->phone_nuber);
+
+
+
+            $i++;
+        }
+
+
+        try {
+            $objWriter = IOFactory::createWriter($excelTemplate, 'Xls');
+        } catch (\PhpOffice\PhpSpreadsheet\Writer\Exception $e) {
+            dd($e);
+        }
+        //
+
+//        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+//        header('Content-Disposition: attachment;filename="newfile.Xlsx"');
+
+
+         header('Content-Type: application/vnd.ms-excel');
+
+
+       // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+
+
+
+        header('Content-Disposition: attachment;filename="01simple.xls"');
+        header('Cache-Control: max-age=0');
+        try {
+            $objWriter->save('php://output');
+        } catch (\PhpOffice\PhpSpreadsheet\Writer\Exception $e) {
+            dd($e);
+        }
+
+
     }
 }

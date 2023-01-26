@@ -42,7 +42,7 @@ class StatsExport implements  FromCollection , WithMapping ,WithHeadings ,Should
 
         $companies=Reservation::select('company')->distinct()->get();
 
-        info($companies);
+
 
 
         $space=new Venue();
