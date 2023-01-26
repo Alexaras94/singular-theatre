@@ -140,8 +140,10 @@ class ReservationController extends Controller
     }
 
     public function  export()
+
+        
     {
-        $reservations = Reservation::with('venue')->get();
+        $reservations = Reservation::orderBy('venue_id','ASC')->with('venue')->get();
         $this->ExcelDownload($reservations);
     }
 
