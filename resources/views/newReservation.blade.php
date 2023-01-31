@@ -18,16 +18,20 @@
             <p class="text-md mt-1">της ομάδας «Εμείς»</p>
             <p class="m-5 text-lg">
                 Η θεατρική ομάδα των εταιρειών SingularLogic και Epsilon Singularlogic παρουσιάζει στις 29 και 30
-                Ιανουαρίου καθώς και 2 και 5 Φεβρουαρίου 2023 το έργο «Interview» γραμμένο από την Ομάδα «Εμείς»,
-                στο θέατρο Αλάμπρα στις 21:00.
+                Ιανουαρίου καθώς και 2 και 5 Φεβρουαρίου 2023 το έργο «Interview» γραμμένο από την Ομάδα «Εμείς».
             </p>
 
-            <p class="m-5 text-lg">
+            <p class="m-4 text-lg">
 
                 Το έργο, μια κοινωνικοπολιτική μαύρη κωμωδία, που με άξονα την εξουσία και τις
                 εργασιακές σχέσεις εξερευνά και περιγράφει τις συμπεριφορές των ανθρώπων, τους ανταγωνισμούς που
                 αναπτύσσονται μεταξύ τους, τις αξίες τους, τις αντοχές τους σε συνθήκες πίεσης και τους συμβιβασμούς
                 που είναι διατεθειμένοι να κάνουν.
+            </p>
+
+            <p class="m-3 text-md">
+
+                Θέατρο Αλάμπρα - Στουρνάρη 53, Αθήνα - 21:00
             </p>
         </div>
 
@@ -77,7 +81,8 @@
                     </option>
                     @foreach ($venues as $venue)
                         @if ($venue->status == 'ACTIVE')
-                            <option value="{{ $venue->id }}" style="color:{{ $helper->DropDownColour($venue) }} " {{ old('venue_id') == $venue->id ? 'selected' : '' }}>
+                            <option value="{{ $venue->id }}" style="color:{{ $helper->DropDownColour($venue) }} "
+                                {{ old('venue_id') == $venue->id ? 'selected' : '' }}>
                                 @if ($helper->DropDownColour($venue) == '#FF3333')
                                     {{ $venue->venue_date . ' (Απομένουν ' . $venue->free_seats . ' θέσεις)' }}
                                 @else
@@ -85,7 +90,7 @@
                                 @endif
                             </option>
                         @elseif ($venue->status == 'EXPIRED')
-                            <option value="{{ $venue->id }}" disabled >
+                            <option value="{{ $venue->id }}" disabled>
                                 {{ $venue->venue_date . ' (Περασμένη ημερομηνία)' }}
                             </option>
                         @elseif ($venue->status == 'SOLD OUT')
@@ -101,12 +106,13 @@
 
                 </select>
 
-                <input required type="number" name="number_of_seats" min=1 max=4 placeholder="Αριθμός Θέσεων" value="{{ old('number_of_seats') }}"
+                <input required type="number" name="number_of_seats" min=1 max=4 placeholder="Αριθμός Θέσεων"
+                    value="{{ old('number_of_seats') }}"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <input required type="text" name="username" placeholder="Ονοματεπώνυμο" value="{{ old('username') }}"
                     pattern="[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*+[ ]+[a-zA-ZΑ-Ωα-ωίϊΐόάέύϋΰήώ]*" minlength="8" maxlength="30"
-                    class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0"/>
+                    class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
 
 
@@ -116,19 +122,20 @@
                     <option value="" hidden>
                         Επιλέξτε Εταιρεία
                     </option>
-                    <option value="SingularLogic" {{ old('company') == "SingularLogic" ? 'selected' : '' }}>
+                    <option value="SingularLogic" {{ old('company') == 'SingularLogic' ? 'selected' : '' }}>
                         SingularLogic
                     </option>
-                    <option value="Epsilon Singularlogic" {{ old('company') == "Epsilon Singularlogic" ? 'selected' : '' }} >
+                    <option value="Epsilon Singularlogic"
+                        {{ old('company') == 'Epsilon Singularlogic' ? 'selected' : '' }}>
                         Epsilon Singularlogic
                     </option>
-                    <option value="Epsilon" {{ old('company') == "Epsilon" ? 'selected' : '' }} >
+                    <option value="Epsilon" {{ old('company') == 'Epsilon' ? 'selected' : '' }}>
                         Epsilon Net
                     </option>
-                    <option value="Space" {{ old('company') == "Space" ? 'selected' : '' }} >
+                    <option value="Space" {{ old('company') == 'Space' ? 'selected' : '' }}>
                         Space Hellas
                     </option>
-                    <option value="Άλλο" {{ old('company') == "Άλλο" ? 'selected' : '' }}>
+                    <option value="Άλλο" {{ old('company') == 'Άλλο' ? 'selected' : '' }}>
                         Άλλο
                     </option>
 
@@ -137,7 +144,8 @@
                 <input required type="email" name="email" placeholder="Email" value="{{ old('email') }}"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
-                <input required type="tel" name="phone_number" placeholder="Κινητό Τηλέφωνο" value="{{ old('phone_number') }}" pattern="69+[0-9]{8}"
+                <input required type="tel" name="phone_number" placeholder="Κινητό Τηλέφωνο"
+                    value="{{ old('phone_number') }}" pattern="69+[0-9]{8}"
                     class="m-3 border-2 border-shadow rounded-lg focus:border-shadow focus:ring-0" />
 
                 <p class="lg:col-span-2 text-white text-xs px-3">Τα στοιχεία Ονοματεπώνυμο, email,
