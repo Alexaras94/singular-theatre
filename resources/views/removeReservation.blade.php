@@ -46,9 +46,11 @@
                         Επιλέξτε ημερομηνία
                     </option>
                     @foreach ($venues as $venue)
-                        <option value="{{ $venue->id }}">
-                            {{ $venue->venue_date }}
-                        </option>
+                        @if ($venue->status == 'ACTIVE')
+                            <option value="{{ $venue->id }}">
+                                {{ $venue->venue_date }}
+                            </option>
+                        @endif
                     @endforeach
 
                 </select>

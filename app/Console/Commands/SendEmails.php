@@ -3,8 +3,7 @@
 namespace App\Console\Commands;
 
 
-use App\Mail\reservationDeleted;
-use App\Mail\reservationsucceed;
+use App\Mail\venueCancellation;
 use App\Models\Reservation;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
@@ -33,10 +32,9 @@ class SendEmails extends Command
      */
     public function handle()
     {
-        $reservations=Reservation::with('venue')->get();
-        foreach ($reservations as $reservation)
-        {
-            Mail::to($reservation->email)->queue(new reservationsucceed($reservation,$reservation->venue));
+        $reservations = Reservation::where('venue_id', 3)->with('venue')->get();
+        foreach ($reservations as $reservation) {
+            Mail::to($reservation->email)->queue(new venueCancellation($reservation, $reservation->venue));
         }
         return Command::SUCCESS;
     }

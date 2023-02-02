@@ -99,7 +99,7 @@
                             </option>
                         @else
                             <option value="{{ $venue->id }}" disabled>
-                                {{ $venue->venue_date . ' (Ανενεργή)' }}
+                                {{ $venue->venue_date . ' (Μεταφέρθηκε στις 2023-02-04)' }}
                             </option>
                         @endif
                     @endforeach

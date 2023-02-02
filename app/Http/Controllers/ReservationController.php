@@ -30,7 +30,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $venues = Venue::all();
+        $venues = Venue::orderBy('venue_date', 'ASC')->get();
         return view('newReservation', ['venues' => $venues]);
     }
 
@@ -141,9 +141,9 @@ class ReservationController extends Controller
 
     public function  export()
 
-        
+
     {
-        $reservations = Reservation::orderBy('venue_id','ASC')->with('venue')->get();
+        $reservations = Reservation::orderBy('venue_id', 'ASC')->with('venue')->get();
         $this->ExcelDownload($reservations);
     }
 

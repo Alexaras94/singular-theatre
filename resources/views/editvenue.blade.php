@@ -108,6 +108,7 @@
         document.getElementById('hidden_id').value = id;
         if (v.status == 'ACTIVE' || v.status == 'INACTIVE') {
             document.getElementById('status').value = v.status;
+            document.getElementById('status').disabled = false;
         } else {
             document.getElementById('status').value = v.status;
             document.getElementById('status').disabled = true;
